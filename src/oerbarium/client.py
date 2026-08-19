@@ -18,7 +18,7 @@ THINK_BLOCK = re.compile(r"<think>.*?</think>", re.DOTALL)
 CODE_FENCE = re.compile(r"^```(?:json)?\s*|\s*```$", re.MULTILINE)
 
 
-class MakiClient:
+class LlmClient:
     """OpenAI compatible API client for querying LLMs."""
 
     def __init__(

@@ -5,7 +5,7 @@ from pathlib import Path
 
 import click
 
-from .client import MakiClient
+from .client import LlmClient
 from .config import resolve_api_key, resolve_base_url, resolve_model_name
 from .crawler import DariahCrawler, read_url_list
 from .errors import ClientError, ConfigurationError
@@ -199,7 +199,7 @@ def parse_oer(
         skip_keys = Counter(normalize_title(record.Title) for record in existing)
 
         source = record_source_for(input_path)
-        client = MakiClient(
+        client = LlmClient(
             api_key=resolve_api_key(api_key),
             model_name=_require_model_name(model_name),
             base_url=base_url or resolve_base_url(),
