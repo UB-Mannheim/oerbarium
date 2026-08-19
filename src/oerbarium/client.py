@@ -5,7 +5,7 @@ import re
 from openai import APIError, OpenAI
 from pydantic import ValidationError
 
-from .config import DEFAULT_BASE_URL, MAKI_API_KEY
+from .config import API_BASE_URL, API_KEY
 from .errors import ClientError, ConfigurationError, ParsingError
 from .prompts import DEFAULT_SYSTEM_PROMPT
 from .schema import DaliaInterchangeFormat
@@ -25,7 +25,7 @@ class MakiClient:
         self,
         api_key: str,
         model_name: str,
-        base_url: str = DEFAULT_BASE_URL,
+        base_url: str = API_BASE_URL,
         tools: ToolRegistry | None = None,
         timeout: float = 180.0,
         max_retries: int = 1,
@@ -34,7 +34,7 @@ class MakiClient:
     ):
         if not api_key:
             raise ConfigurationError(
-                f"API key is empty. Set {MAKI_API_KEY} or pass --api-key."
+                f"API key is empty. Set {API_KEY} or pass --api-key."
             )
         if not model_name:
             raise ConfigurationError(

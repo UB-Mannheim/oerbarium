@@ -84,7 +84,7 @@ oerbarium parse -i crawled.json -o parsed.json
 | `-f, --format` | Output format: `json` (default) or `tsv` |
 | `-m, --model-name` | LLM model name (overrides `MODEL_NAME`) |
 | `-b, --base-url` | API base URL (overrides `API_BASE_URL`) |
-| `--api-key` | API key (overrides `MAKI_API_KEY`) |
+| `--api-key` | API key (overrides `API_KEY`) |
 | `--strict` | Abort on the first failing record; already-parsed records are kept |
 | `-v, --verbose` | Log progress and tool calls |
 
