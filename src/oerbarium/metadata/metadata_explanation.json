@@ -1,0 +1,149 @@
+[
+  {
+    "attribute name": "Authors",
+    "description": "The name(s) of the person(s) or organization(s) who created (wrote, made, presented ...) the resource. Can include ORCIDs or RORs.",
+    "values (constraint type : constraint)": "1. for persons: surname, prename : {ORCID} (Mandatory, Recommended, Recommended) \n2. for organizations: organization-name : {organization ROR > Wikidata} (Mandatory, Recommended",
+    "examples": "(1) Mustermann, Max : {https://orcid.org/0000-0001-2345-6789} * Musterfrau, Paula\n(2) Müllermeier, John * Musterkollegin, Alex * Nationale Forschungsdateninfrastruktur : {organization https://ror.org/05qj6w324}\n(3) NFDI4Chem : {organization http://www.wikidata.org/entity/Q96678459} * Example-Organization-without-identifier : {organization}",
+    "comment": "Names and ORCIDs or RORs. ORCIDs are highly recommended. \nIf there is just one name such as \"chrissikraus\", put the information to the surname field."
+  },
+  {
+    "attribute name": "License",
+    "description": "The license identifier of the resource which refers to a legal document giving official permission to do something with the resource.",
+    "values (constraint type : constraint)": "non-proprietary licenses of the content of the \"Identifier\" column from SPDX, e.g. \"CC-BY-4.0\" or \"CC-BY-NC-ND-3.0\", other non-proprietary licenses, and \"proprietary\" for proprietary license",
+    "examples": "(1) CC-BY-SA-4.0\n(2) proprietary",
+    "comment": "\"proprietary\" should also be used for unclear licenses."
+  },
+  {
+    "attribute name": "Link",
+    "description": "The hyperlink(s) to the resource.",
+    "values (constraint type : constraint)": "DOI > other URLs",
+    "examples": "(1) https://doi.org/10.5281/zenodo.10122153\n(2) https://data-affairs.affective-societies.de/lerneinheiten/forschungsethik-und-datenethik/\n(3) https://doi.org/10.25656/01:29235 * https://doi.org/10.5281/zenodo.10828758",
+    "comment": null
+  },
+  {
+    "attribute name": "Title",
+    "description": "The title (and subtitle) of the resource.",
+    "values (constraint type : constraint)": "open, subtitle segmented by colon (: )",
+    "examples": "(1) cool learning resource: with a cool subtitle",
+    "comment": null
+  },
+  {
+    "attribute name": "AccessibilityFeature",
+    "description": "Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility.",
+    "values (constraint type : constraint)": "Values should be drawn from the approved vocabulary. See https://www.w3.org/community/reports/a11y-discov-vocab/CG-FINAL-vocabulary-20241209 .",
+    "examples": null,
+    "comment": null
+  },
+  {
+    "attribute name": "Community",
+    "description": "Associated community(ies) of the resource who are either the supporting organization, institution, project, body, or online group, or the recommender, or both. A community gathers users (members) and educational resources/learning paths similar to Zenodo communities.\nThe supporting community is the organization, institution, project, body, or online group which supports the production, training, curation, dissemination, or administration of the educational resource by allocating facilities, staff, or other resources. \nThe recommending community approves the resource.",
+    "values (constraint type : constraint)": "1. picklist: consortia which are listed at https://www.wikidata.org/wiki/Q61658497 (NFDI) and/or at https://www.wikidata.org/wiki/Q61658497 and/or at https://www.wikidata.org/wiki/Q111582288 and/or https://www.wikidata.org/wiki/Q61658497 has_subsidiary or is part_of and/or are https://www.wikidata.org/wiki/Q98270496 wd:Q105757481 or have Q61658497 (NFDI) as a parent organization > ROR name > name (string)\n\n2. If the community is the supporting community: communityName (S), if it is recommending the OER: communityName (R), both: communityName (SR)",
+    "examples": "(1) NFDI4Culture (S) * DALIA (R)\n(2) fdm.nrw (SR)",
+    "comment": "(S) defined by mrel:sht\n(R) defined by rec:recommender"
+  },
+  {
+    "attribute name": "Description",
+    "description": "The description of the resource.",
+    "values (constraint type : constraint)": "open",
+    "examples": "(1) This is a very cool learning resource for research data management.",
+    "comment": null
+  },
+  {
+    "attribute name": "Discipline",
+    "description": "The discipline or university/college subject the learning resource belongs to.",
+    "values (constraint type : constraint)": "picklist: German University Subject Classification System (\"Systematik der Fächergruppen, Studienbereiche und Studienfächer\") as defined by Statistisches Bundesamt https://w3id.org/kim/hochschulfaechersystematik/scheme",
+    "examples": "(1) https://w3id.org/kim/hochschulfaechersystematik/n079\n(2) https://w3id.org/kim/hochschulfaechersystematik/n0\n(3) https://w3id.org/kim/hochschulfaechersystematik/n42 * https://w3id.org/kim/hochschulfaechersystematik/n221",
+    "comment": "Please choose the most specific categories (deep in the hierarchy)."
+  },
+  {
+    "attribute name": "FileFormat",
+    "description": "The (technical) file format(s) of the resource. If the resource exists in different formats (e.g. pptx and pdf), all of them should be provided. For non-downloadable resources, e.g. streams, no format can be provided (e.g. YouTube videos).",
+    "values (constraint type : constraint)": "The controlled vocabulary LoCFileFormatList which is overlapping with the MIME file types (extensions): https://mimetype.io/all-types and the fileTypes from McCallum, Patrick (2024): mimeData.json.",
+    "examples": "(1) .pptx\n(2) .pdf * .odt",
+    "comment": "If a resource exists in more than one formats, it is one resource. If a resource consists of more than one parts and has different DOIs, leave the format open, and describe the file format for each of the parts (mediatype: multipart).\nThe file format helps users to choose tools to work with the resource."
+  },
+  {
+    "attribute name": "Keywords",
+    "description": "Essential and characteristic topics or content of the resource.",
+    "values (constraint type : constraint)": "open, but picklist recommended: https://id.loc.gov/authorities/subjects.html, https://www.wikidata.org/wiki/Wikidata:Main_Page,\nhttps://lobid.org/gnd",
+    "examples": "(1) data quality\n(2) metadata * open educational resources",
+    "comment": null
+  },
+  {
+    "attribute name": "Language",
+    "description": "The language(s) of the resource, 2 char code preferred.",
+    "values (constraint type : constraint)": "picklist: ISO 639-1 (two characters, e.g. en) > ISO 639-3 (three character codes)\nsee https://id.loc.gov/vocabulary/iso639-1.html, https://www.loc.gov/standards/iso639-2/php/code_list.php, https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes\n\nIRIs are from the extensive lists from lexvo.org",
+    "examples": "(1) de\n(2) en * de",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "description": "The pedagogical type of the resource: information for the educational use. This includes the most specific type: rather textbook than book.",
+    "values (constraint type : constraint)": "The picklist is compiled from https://w3id.org/kim/hcrt/scheme (with exceptions), bibo, dcterms, schema, and own definitions. (Modified) definitions were also taken from other sources such as ISO standards, fabio, sio, wikidata.\nhcrt:application, modalia:CodeNotebook, schema:SoftwareSourceCode, bibo:Article, hcrt:assessment, modalia:BestPractices, \nbibo:Book, hcrt:textbook, bibo:Thesis, hcrt:case_study, modalia:Cookbook, hcrt:course, modalia:Lecture, modalia:Tutorial, bibo:Workshop, hcrt:data, hcrt:diagram, hcrt:drill_and_practice, hcrt:worksheet, hcrt:educational_game, hcrt:experiment, hcrt:index, hcrt:lesson_plan hcrt:map, modalia:Podcast, hcrt:portal, fabio:WebSite, modalia:Poster, hcrt:questionnaire, bibo:Report, hcrt:script, hcrt:sheet_music, hcrt:simulation, bibo:Webpage, hcrt:other",
+    "examples": "(1) Lecture\n(2) CodeNotebook * Tutorial",
+    "comment": null
+  },
+  {
+    "attribute name": "MediaType",
+    "description": "The general type of data content encoded in a computer file in terms of its modality (text, audio, picture etc.). The media type is to be used for user preferences for the learning style(s). If the resource consists of multiple items with different DOIs, the MediaType is \"multipart\" and the relations are provided in the \"RelatedWork\" field.",
+    "values (constraint type : constraint)": "picklist: audio, video, text, presentation, code, image, multipart",
+    "examples": "(1) text * presentation\n(2) video",
+    "comment": "Do not confuse this with format and learning resource type; can be \"presentation\" but NOT \"lesson\" or \"experiment\".\n\nIf a resource consists of multiple parts and has different DOIs, describe the mediatype for each part (media type: multipart). This applies to podcasts as well."
+  },
+  {
+    "attribute name": "ProficiencyLevel",
+    "description": "The proposed level of proficiency in research data management and data literacy of the learners in regard to the learning content.",
+    "values (constraint type : constraint)": "picklist: Novice, AdvancedBeginner, Competent, Proficient, Expert",
+    "examples": "(1) Novice * AdvancedBeginner",
+    "comment": "Picklist according to Dreyfus’s \"Novice\" to \"Expert\". The proficiency level refers to the topic of the OER on RDM and data literacy, not to the target group. Dreyfus, Stuart E. (2004). The Five-Stage Model of Adult Skill Acquisition. In: Bulletin of Science, Technology & Society 24 (3), S. 177–181. DOI: 10.1177/0270467604264992.\nThe labels are from Benner (1982)."
+  },
+  {
+    "attribute name": "PublicationDate",
+    "description": "The date of first publication or broadcast.",
+    "values (constraint type : constraint)": "ISO 8601 format (https://www.iso.org/iso-8601-date-and-time-format.html). If the full date is unknown, month and year (YYYY-MM) or just year (YYYY) may be used.",
+    "examples": "(1) 2024-03-31\n(2) 2023-12\n(3) 2022",
+    "comment": null
+  },
+  {
+    "attribute name": "TargetGroup",
+    "description": "The target group refers to the learners of the resource: A class of agents for whom the learning resource is intended or useful.",
+    "values (constraint type : constraint)": "picklist: student (school), student (BA), student (MA), student (PhD), data steward, teacher (school), teacher (higher education), researcher, content provider, librarian, archivist, museum professional",
+    "examples": "(1) student (BA) * student (MA)\n(2) student (PhD) * data steward * researcher",
+    "comment": "This does not address who is teaching. The group of (optional) teachers is not considered, only the learners are. If the learning group includes teachers, then this must be selected from the picklist."
+  },
+  {
+    "attribute name": "Teaches",
+    "description": "The competency, learning outcome, or learning objective the target group is intended to acquire or achieve by the educational resource.",
+    "values (constraint type : constraint)": "May reference the LZM learning objectives but is not limited to them.",
+    "examples": "(1) Learners are able to name the elements and objectives of research data policies.\n(2) LZM v3 Lernziel 01_004_0058",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "description": "The relation(s) to other resources. It is required to identify the related resource by means of a URL.",
+    "values (constraint type : constraint)": "DALIA: picklist based on dcterms, citedcat (adopted from DataCite), modalia (adopted from DataCite), schema. For the LINK: DOI > other URLs.",
+    "examples": "(1) isBasedOn:https://doi.org/10.5281/zenodo.8297723\n(2) isSupplementTo:https://doi.org/10.5281/zenodo.10122153",
+    "comment": null
+  },
+  {
+    "attribute name": "Size",
+    "description": "The size of the application / package (e.g. 18 MB). In the absence of a unit (MB, KB etc.), MB will be assumed.",
+    "values (constraint type : constraint)": "open",
+    "examples": "(1) 10 \n(2) 0.034 MB",
+    "comment": "Please note: MB will be assumed as the unit. This is not consistent with schema:fileSize, where KB will be assumed."
+  },
+  {
+    "attribute name": "Version",
+    "description": "The version of the learning resource.",
+    "values (constraint type : constraint)": "open",
+    "examples": "(1) 2.3",
+    "comment": null
+  },
+  {
+    "attribute name": "Contributors",
+    "description": "The name(s) of the person(s) or organization(s) who contributed to the resource with the roles from the picklist.",
+    "values (constraint type : constraint)": "1. for persons: surname, prename : {contributor role} : {ORCID} (Mandatory, Recommended, Mandatory, Recommended) \n2. for organizations: organization-name : {contributor role}: {organization ROR > Wikidata} (Mandatory, Mandatory, Recommended)\npicklist from https://id.loc.gov/vocabulary/relators.html, Metadata4ing, DataCite, schema. Consistent with Zenodo. Includes suggestions for CRediT categories.",
+    "examples": "(1) Lange, Frank : {ProjectMember} : {https://orcid.org/0000-0002-9346-6031}\n(2) Fuhrmans, Marc : {Supervisor} : {https://orcid.org/0000-0002-9826-018X} * Nadeem, Unaiza : {Other}",
+    "comment": null
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "No": 1,
+    "Authors": "Krishnaveni, Chennuru Venkata : {https://orcid.org/0000-0003-2209-483X}",
+    "License": "MIT * CC-BY-4.0",
+    "Link": "https://vkchennuru.github.io/AI-Prompt-Engineering-Playground/",
+    "Title": "AI-Prompt-Engineering-Playground: Free interactive OER for learning AI Prompt Engineering",
+    "AccessibilityFeature": null,
+    "Community": null,
+    "Description": "AI Prompt Engineering Playground is a free, interactive Open Educational Resource (OER) for structured self-learning in AI Prompt Engineering. The platform guides learners through six progressive levels — from foundational prompt writing to advanced production-ready techniques — with no registration, no cost, and no prerequisites required.\n\nTopics covered include: prompt basics, zero-shot and few-shot prompting, chain-of-thought reasoning, role prompting, reusable prompt patterns, token optimization, A/B testing, domain-specific applications (code, content, data analysis, business), and production safety practices including prompt injection defense.\n\nThe resource features 100+ hands-on interactive exercises, real-time prompt scoring, a pattern library with copyable templates, a token counter tool, and knowledge quizzes at each level. Progress is saved automatically in the browser.\n\nSuitable for undergraduate and postgraduate students, educators integrating AI literacy into curricula, and self-directed learners building applied Generative AI skills. Licensed under MIT — free to use, adapt, and share.",
+    "Discipline": "https://w3id.org/kim/hochschulfaechersystematik/n0",
+    "FileFormat": ".html",
+    "Keywords": "AI literacy * generative AI * large language models * LLM * prompt engineering * self-paced learning",
+    "Language": "en",
+    "LearningResourceType": "Course",
+    "MediaType": "Text",
+    "ProficiencyLevel": "Novice",
+    "PublicationDate": "2026-02-20",
+    "TargetGroup": "StudentSchool * BachelorStudent * Master'sStudent * PhDStudent * TeacherSchool * TeacherHigherEducation * Researcher * Librarian *  Archivist * MuseumProfessional",
+    "Teaches": "This course teaches prompt basics, zero-shot and few-shot prompting, chain-of-thought reasoning, role prompting, reusable prompt patterns, token optimization, A/B testing, domain-specific applications (code, content, data analysis, business), and production safety practices including prompt injection defense."
+  }
+]

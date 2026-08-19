@@ -1,0 +1,914 @@
+[
+  {
+    "attribute name": "License",
+    "picklist Item (value) or Controlled Vocabulary": "SPDXLicenseList",
+    "description": "The licenses included in the SPDX License List (http://spdx.org/licenses).",
+    "term IRI (or link of source)": "http://spdx.org/licenses",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "CVL",
+    "comment": null
+  },
+  {
+    "attribute name": "License",
+    "picklist Item (value) or Controlled Vocabulary": "ProprietaryLicense",
+    "description": "A proprietary license is a type of license for a creative work in which the copyright holder retains most of the rights exclusively.",
+    "term IRI (or link of source)": "modalia:ProprietaryLicense",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "Community",
+    "picklist Item (value) or Controlled Vocabulary": "S (supportingCommunity)",
+    "description": "The supporting community is the organization or institution or project or body or online group which supports the production, training, curation, dissemination, or administration of the OER by allocating facilities, staff, or other resources.",
+    "term IRI (or link of source)": "modalia:supportingHost",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "Community",
+    "picklist Item (value) or Controlled Vocabulary": "R (recommendingCommunity)",
+    "description": "The recommending community is the organization, institution, project, body, or online group which recommends the educational resource.",
+    "term IRI (or link of source)": "modalia:recommender",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "Discipline",
+    "picklist Item (value) or Controlled Vocabulary": "DisciplineDestatisList",
+    "description": "The disciplines included in the German University Subject Classification System (\"Systematik der Fächergruppen, Studienbereiche und Studienfächer\") as defined by Statistisches Bundesamt (https://w3id.org/kim/hochschulfaechersystematik/scheme).",
+    "term IRI (or link of source)": "https://w3id.org/kim/hochschulfaechersystematik/scheme",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "CVL",
+    "comment": "Statistisches Bundesamt (2024). Systematik der Fächergruppen, Studienbereiche und Studienfächer. https://www.destatis.de/DE/Methoden/Klassifikationen/Bildung/studenten-pruefungsstatistik.html ."
+  },
+  {
+    "attribute name": "FileFormat",
+    "picklist Item (value) or Controlled Vocabulary": "LoCFileFormatList",
+    "description": "The file formats included in the XML Format Description Documents of the Library of Congress, which is overlapping with the MIME file types (extensions): https://mimetype.io/all-types and the fileTypes from McCallum, Patrick (2024): mimeData.json. (https://www.loc.gov/preservation/digital/formats/fddXML/)",
+    "term IRI (or link of source)": "https://www.loc.gov/preservation/digital/formats/fddXML/",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "CVL",
+    "comment": null
+  },
+  {
+    "attribute name": "Language",
+    "picklist Item (value) or Controlled Vocabulary": "LanguageLexvoList",
+    "description": "The languages included in the lexvo language vocabulary ( http://www.lexvo.org/data/iso639-1/ and http://www.lexvo.org/data/iso639-3/ ).",
+    "term IRI (or link of source)": "http://www.lexvo.org/data/iso639-1/ and http://www.lexvo.org/data/iso639-3/",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "CVL",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Article",
+    "description": "A written composition in prose, usually nonfiction, on a specific topic, forming an independent part of a book or other publication, as a newspaper or magazine.",
+    "term IRI (or link of source)": "bibo:Article",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Assessment",
+    "description": "The description of an activity or resource used to ensure attainment of a learning objective or learning outcome.",
+    "term IRI (or link of source)": "hcrt:assessment",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "BestPractices",
+    "description": "A process or method that has been shown to work well, succeeds in achieving its objective(s), is acknowledged and therefore can be recommended as an approach.",
+    "term IRI (or link of source)": "modalia:BestPractices",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Book",
+    "description": "A non-serial document that is complete in one volume or a designated finite number of volumes. A book published by a publisher is usually identified by an International Standard Book Number (ISBN), and may be manifested as a physical printed publication on paper bound in a hard or soft cover, or in electronic format.",
+    "term IRI (or link of source)": "bibo:Book",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "CaseStudy",
+    "description": "A description of an actual situation, commonly involving a decision, a challenge, an opportunity, a problem or an issue.",
+    "term IRI (or link of source)": "hcrt:case_study",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: ISO/IEC 19788-5:2014, 30, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "CodeNotebook",
+    "description": "Program used to mix code, comments, and visualizations in an interactive document called notebook that can be shared, reused, and reworked in a web browser.",
+    "term IRI (or link of source)": "modalia:CodeNotebook",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Cookbook",
+    "description": "A thematic collection of useful procedures in IT.",
+    "term IRI (or link of source)": "modalia:Cookbook",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: https://www.wikidata.org/wiki/Q3689925, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Course",
+    "description": "An educational course comprises one or more educational events and/or creative works which aims to build knowledge, competence or ability of learners.",
+    "term IRI (or link of source)": "hcrt:course",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: https://schema.org/Course, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Data",
+    "description": "Any form of digital representation, e.g. facts, measurements, recordings, records, or observations about the world. Data may be in any format or medium taking the form of writings, notes, numbers, symbols, text, images, films, video, sound recordings, pictorial reproductions, drawings, designs or other graphical representations, procedural manuals, forms, diagrams, work flow charts, equipment descriptions, data files, data processing algorithms, or statistical records.",
+    "term IRI (or link of source)": "hcrt:data",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: CODATA-RDM, p. 6, T4FS:0000430, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Diagram",
+    "description": "An image that illustrates the structure and/or its component substructures and/or relations with other structures by using lines, shapes, text, and other symbols.",
+    "term IRI (or link of source)": "hcrt:diagram",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: https://schema.org/diagram, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "DrillAndPractice",
+    "description": "Exercise(s) or activities for the (repetitive) training of a skill or knowledge.",
+    "term IRI (or link of source)": "hcrt:drill_and_practice",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Educational Game",
+    "description": "An individual or group game intended to teach a subject, skill, or attitude.",
+    "term IRI (or link of source)": "hcrt:educational_game",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: http://vocab.getty.edu/page/aat/300262798, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Experiment",
+    "description": "A scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact.",
+    "term IRI (or link of source)": "hcrt:experiment",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: ISO/IEC 19788-5:2014, 31, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Lecture",
+    "description": "An informative talk given to an audience or class and usually prepared beforehand, or the text of such a talk.",
+    "term IRI (or link of source)": "modalia:Lecture",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: ISO/IEC 19788-5:2014, 30, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "LessonPlan",
+    "description": "Detailed descriptions or outlines for a pedagogical session. Usually includes objective(s), instructional components or methods, and assessment.",
+    "term IRI (or link of source)": "hcrt:lesson_plan",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: http://vocab.getty.edu/page/aat/300417283, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Map",
+    "description": "Graphic representations of a geographic area, including physical features and political boundaries, where each point corresponds to a geographical or celestial position according to a definite scale or projection. The term may also refer to similar depictions of other planets, suns, other heavenly bodies, or areas of the heavens. Maps are typically depicted on a flat medium, such as on paper, a wall, or a computer screen.",
+    "term IRI (or link of source)": "hcrt:map",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: http://vocab.getty.edu/page/aat/300028094, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Podcast",
+    "description": "The learning resource type podcast is an episodic series of digital audio or video files or an episode of that, which a user can download and listen to.",
+    "term IRI (or link of source)": "modalia:podcast",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "Modified source of definition: schema:PodcastSeries, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Poster",
+    "description": "A large, usually printed placard, bill, or announcement, often illustrated, that is posted to advertise or publicize something.",
+    "term IRI (or link of source)": "modalia:Poster",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: schema:Poster, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Questionnaire",
+    "description": "A set of questions with a choice of answers, devised for the purposes of a survey or statistical study.",
+    "term IRI (or link of source)": "hcrt:questionaire",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: ISO/IEC 19788-5:2014 , 32, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "ReferenceWork",
+    "description": "Material to be consulted for authoritative factual information, such as a dictionary, encyclopaedia, entry, handbook, standard, or field guide, or an informative web page such as an institutional, research group or project home page.",
+    "term IRI (or link of source)": "hcrt:index",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: fabio:ReferenceWork, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Report",
+    "description": "A document describing an account or statement describing in detail an event, situation, or the like, usually as the result of observation, inquiry, etc.",
+    "term IRI (or link of source)": "bibo:Report",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Script",
+    "description": "A script or scriptum is a textbook or study materials that include the content of a lecture series or course.",
+    "term IRI (or link of source)": "hrct:script",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "SheetMusic",
+    "description": "A piece of musical notation.",
+    "term IRI (or link of source)": "hcrt:sheet_music",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Simulation",
+    "description": "The reproducing of characteristics, conditions, and/or systems, often by the use of a model or a representation.",
+    "term IRI (or link of source)": "hcrt:simulation",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: ISO/IEC 19788-5:2014, 32, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "SoftwareApplication",
+    "description": "A software application is software that can be directly executed by some processing unit.",
+    "term IRI (or link of source)": "hcrt:application",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "SoftwareSourceCode",
+    "description": "Source code (also referred to as source or code) is the version of software as it is originally written in plain text (i.e., human readable alphanumeric characters).",
+    "term IRI (or link of source)": "schema:SoftwareSourceCode",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Textbook",
+    "description": "Book used as standard work for the formal study of a particular subject.",
+    "term IRI (or link of source)": "hcrt:textbook",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Thesis",
+    "description": "A document created to summarize research findings associated with the completion of an academic degree.",
+    "term IRI (or link of source)": "bibo:Thesis",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Tutorial",
+    "description": "A course with strong instructional components containing exercises, information, etc.",
+    "term IRI (or link of source)": "modalia:Tutorial",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: ISO/IEC 19788-5:2014, 32, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Webpage",
+    "description": "A web page is an online document available (at least initially) on the world wide web.",
+    "term IRI (or link of source)": "bibo:Webpage",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "WebPortal",
+    "description": "A website that integrates applications, processes and services.",
+    "term IRI (or link of source)": "hrct:portal",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: https://www.wikidata.org/wiki/Q186165, see GlossOER."
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Worksheet",
+    "description": "A sheet containing exercises or tasks to be completed for the purpose of imparting knowledge, attitudes, or skills.",
+    "term IRI (or link of source)": "hcrt:worksheet",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "Workshop",
+    "description": "A seminar, discussion group, or the like, that emphasizes the exchange of ideas and the demonstration and application of techniques, skills, etc. in a specialized field or occupation.",
+    "term IRI (or link of source)": "bibo:Workshop",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "WebSite",
+    "description": "A collection of related web pages containing text, images, videos and/or other digital assets that are addressed relative to a common Uniform Resource Locator (URL). A web site is hosted on at least one web server, accessible via a network such as the Internet or a private local area network.",
+    "term IRI (or link of source)": "fabio:WebSite",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "LearningResourceType",
+    "picklist Item (value) or Controlled Vocabulary": "OtherResourceType",
+    "description": "A learning resource type that is not covered by the other listed categories.",
+    "term IRI (or link of source)": "hcrt:other",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "MediaType",
+    "picklist Item (value) or Controlled Vocabulary": "Audio",
+    "description": "A resource has the media type audio if it mainly consists of aural material.",
+    "term IRI (or link of source)": "schema:AudioObject",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "MediaType",
+    "picklist Item (value) or Controlled Vocabulary": "Video",
+    "description": "A resource has the media type video if it mainly consists of moving images.",
+    "term IRI (or link of source)": "schema:VideoObject",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "MediaType",
+    "picklist Item (value) or Controlled Vocabulary": "Text",
+    "description": "A resource has the media type text if it mainly consists of written or writing materials.",
+    "term IRI (or link of source)": "schema:Text",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "MediaType",
+    "picklist Item (value) or Controlled Vocabulary": "Presentation",
+    "description": "A resource has the media type presentation if it mainly consists of slides.",
+    "term IRI (or link of source)": "schema:PresentationDigitalDocument",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "MediaType",
+    "picklist Item (value) or Controlled Vocabulary": "Code",
+    "description": "A resource has the media type code if it mainly consists of programming code.",
+    "term IRI (or link of source)": "modalia:Code",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "MediaType",
+    "picklist Item (value) or Controlled Vocabulary": "Image",
+    "description": "A resource has the media type image if it mainly consists of (a) still image(s).",
+    "term IRI (or link of source)": "schema:ImageObject",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "MediaType",
+    "picklist Item (value) or Controlled Vocabulary": "Multipart",
+    "description": "A resource has the media type 'multipart' if it consists of more than one part, each of a different media type.",
+    "term IRI (or link of source)": "modalia:Multipart",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "ProficiencyLevel",
+    "picklist Item (value) or Controlled Vocabulary": "Novice",
+    "description": "Novice learners are individuals who are unpracticed and have little to no knowledge in the field of learning. They lack a fundamental understanding of basic concepts and are not yet able to assess situations and tasks effectively. They require introductions, descriptions, and guidelines.",
+    "term IRI (or link of source)": "modalia:Novice",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "picklist item according to Dreyfus (2004) \"The Five-Stage Model of Adult Skill Acquisition\" and Benner (1982): novice, advanced beginner, competent, proficient, and expert, see GlossOER."
+  },
+  {
+    "attribute name": "ProficiencyLevel",
+    "picklist Item (value) or Controlled Vocabulary": "AdvancedBeginner",
+    "description": "Advanced beginner learners are individuals who possess some basic knowledge of the field of learning and are able to recognize patterns. They require instructions and need to follow examples.",
+    "term IRI (or link of source)": "modalia:Beginner",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "picklist item according to Dreyfus (2004) \"The Five-Stage Model of Adult Skill Acquisition\" and Benner (1982): novice, advanced beginner, competent, proficient, and expert, see GlossOER."
+  },
+  {
+    "attribute name": "ProficiencyLevel",
+    "picklist Item (value) or Controlled Vocabulary": "Competent",
+    "description": "Competent learners have gained moderate experience in the field of learning through consistent application of skills. They possess significant knowledge of the field, are able to evaluate features, and can efficiently and accurately apply various plans and rules according to situations and tasks. At this stage, problem-solving and decision-making are accompanied by emotional involvement.",
+    "term IRI (or link of source)": "modalia:Competent",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "picklist item according to Dreyfus (2004) \"The Five-Stage Model of Adult Skill Acquisition\" and Benner (1982): novice, advanced beginner, competent, proficient, and expert, see GlossOER."
+  },
+  {
+    "attribute name": "ProficiencyLevel",
+    "picklist Item (value) or Controlled Vocabulary": "Proficient",
+    "description": "Proficient learners possess a strong foundation of knowledge and skills, enabling them to perform tasks with a high degree of accuracy and efficiency. They are able to recognize patterns in situations and tasks, and can develop complex solutions through conscious deliberation.",
+    "term IRI (or link of source)": "modalia:Proficient",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "picklist item according to Dreyfus (2004) \"The Five-Stage Model of Adult Skill Acquisition\" and Benner (1982): novice, advanced beginner, competent, proficient, and expert, see GlossOER."
+  },
+  {
+    "attribute name": "ProficiencyLevel",
+    "picklist Item (value) or Controlled Vocabulary": "Expert",
+    "description": "Expert learners are individuals knowledgeable in a specialized field, particularly people with the special skill or knowledge representing mastery of a particular subject. They possess a deep and comprehensive understanding of the subject matter, enabling them to quickly and intuitively analyze new situations and tasks, and develop complex solutions without conscious deliberation.",
+    "term IRI (or link of source)": "modalia:Expert",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "picklist item according to Dreyfus (2004) \"The Five-Stage Model of Adult Skill Acquisition\" and Benner (1982): novice, advanced beginner, competent, proficient, and expert, see GlossOER."
+  },
+  {
+    "attribute name": "TargetGroup",
+    "picklist Item (value) or Controlled Vocabulary": "StudentSchool",
+    "description": "A student who is attending a school for achieving levels 1, 2, or 3 of the 2011 version of the International Standard Classification of Education structure.",
+    "term IRI (or link of source)": "modalia:StudentSchool",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source from: Unesco2012:32-42 - UNESCO Institute for Statistics (2012). International Standard Classification of Education (ISCED) 2011. Paris: UNESCO. https://uis.unesco.org/sites/default/files/documents/international-standard-classification-of-education-isced-2011-en.pdf, see GlossOER."
+  },
+  {
+    "attribute name": "TargetGroup",
+    "picklist Item (value) or Controlled Vocabulary": "BachelorStudent",
+    "description": "A student of higher education who is attending a university or college (e.g. in USA, GB) for achieving level 6 of the 2011 version of the International Standard Classification of Education structure.",
+    "term IRI (or link of source)": "modalia:BachelorStudent",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "Programmes at ISCED level 6, or Bachelor’s or equivalent level, are often designed to provide participants with intermediate academic and/or professional knowledge, skills and competencies, leading to a first degree or equivalent qualification. Programmes at this level are typically theoretically-based but may include practical components and are informed by state of the art research and/or best professional practice. They are traditionally offered by universities and equivalent tertiary educational institutions. (Unesco2012, 51), see GlossOER."
+  },
+  {
+    "attribute name": "TargetGroup",
+    "picklist Item (value) or Controlled Vocabulary": "Master'sStudent",
+    "description": "A student of higher education who is attending a university or college (e.g. in USA, GB) for achieving level 7 of the 2011 version of the International Standard Classification of Education structure.",
+    "term IRI (or link of source)": "modalia:MastersStudent",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "Programmes at ISCED level 7, or Master’s or equivalent level, are often designed to provide participants with advanced academic and/or professional knowledge, skills and competencies, leading to a second degree or equivalent qualification. Programmes at this level may have a substantial research component but do not yet lead to the award of a doctoral qualification. Typically, programmes at this level are theoretically-based but may include practical components and are informed by state of the art research and/or best professional practice. They are traditionally offered by universities and other tertiary educational institutions. (Unesco 2012, 55), see GlossOER."
+  },
+  {
+    "attribute name": "TargetGroup",
+    "picklist Item (value) or Controlled Vocabulary": "PhDStudent",
+    "description": "A student of higher education who is attending a university or college (e.g. in USA, GB) for achieving level 8 of the 2011 version of the International Standard Classification of Education structure.",
+    "term IRI (or link of source)": "modalia:PhDStudent",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "Programmes at ISCED level 8, or doctoral or equivalent level, are designed primarily to lead to an advanced research qualification. Programmes at this ISCED level are devoted to advanced study and original research and are typically offered only by research-oriented tertiary educational institutions such as universities. Doctoral programmes exist in both academic and professional fields. (Unesco2012, 59), see GlossOER."
+  },
+  {
+    "attribute name": "TargetGroup",
+    "picklist Item (value) or Controlled Vocabulary": "DataSteward",
+    "description": "Data Steward is an umbrella term for numerous support roles that involve the creation, management and usage of research data. These can be very hands-on roles involving daily data analysis or roles that are more policy and advising-focused. A data steward facilitates the quality, integrity and access to (meta)data in a manner that is consistent with the appropriate laws and institutional policies, ensuring professional treatment of data throughout all stages of the research project. Data Stewards are an important part of scientific communities, supporting recommended data management practices and supporting researchers in these efforts. Often their roles overlap with those of data managers and other professionals who curate data. Data Stewards tend to have scientific backgrounds and can have the technical skills needed to analyse and manage both data and software.",
+    "term IRI (or link of source)": "obo:T4FS_0000178",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "ScopeNote: This term primarily refers to scientific communities, with less relevance to industry. Note that the meaning of this term may differ in industrial contexts. For more information, see GlossOER."
+  },
+  {
+    "attribute name": "TargetGroup",
+    "picklist Item (value) or Controlled Vocabulary": "TeacherSchool",
+    "description": "A teacher who is working at a school for levels 1, 2, or 3 of the 2011 version of the International Standard Classification of Education structure.",
+    "term IRI (or link of source)": "modalia:TeacherSchool",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "see Unesco2012:32-42 - UNESCO Institute for Statistics (2012). International Standard Classification of Education (ISCED) 2011. Paris: UNESCO. https://uis.unesco.org/sites/default/files/documents/international-standard-classification-of-education-isced-2011-en.pdf ."
+  },
+  {
+    "attribute name": "TargetGroup",
+    "picklist Item (value) or Controlled Vocabulary": "TeacherHigherEducation",
+    "description": "A teacher who is working at a university or college (e.g. USA, GB) for levels 6, 7, or 8 of the 2011 version of the International Standard Classification of Education structure.",
+    "term IRI (or link of source)": "modalia:TeacherHigherEducation",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "TargetGroup",
+    "picklist Item (value) or Controlled Vocabulary": "Researcher",
+    "description": "A person or a group who attempts to answer research questions, establish facts, and reach new conclusions by systematically investigating and studying materials and sources, observing, or conducting experiments in a particular field relevant to the questions.",
+    "term IRI (or link of source)": "modalia:Researcher",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": null,
+    "comment": "source of definition: FrameNetProject2020, frame:Research, lexical unit: researcher, see GlossOER."
+  },
+  {
+    "attribute name": "TargetGroup",
+    "picklist Item (value) or Controlled Vocabulary": "ContentProvider",
+    "description": "Person or group who is providing (an) OER.",
+    "term IRI (or link of source)": "modalia:ContentProvider",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "TargetGroup",
+    "picklist Item (value) or Controlled Vocabulary": "Librarian",
+    "description": "A person who administers and maintains libraries or collections of information, for public or private access through reference or borrowing. Librarians work in a variety of settings, such as educational institutions, museums, and corporations, and with various types of informational materials, such as books, periodicals, recordings, films, and databases. Tasks may include acquiring, cataloging, and circulating library materials, and user services such as locating and organizing information, providing instruction on how to access information, and setting up and operating a library's media equipment.",
+    "term IRI (or link of source)": "obo:OCCO_25402200",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: OccO: Occupation Ontology, see GlossOER."
+  },
+  {
+    "attribute name": "TargetGroup",
+    "picklist Item (value) or Controlled Vocabulary": "Archivist",
+    "description": "A person who appraises, edits, and directs safekeeping of permanent records and historically valuable documents. Participates in research activities based on archival materials.",
+    "term IRI (or link of source)": "obo:OCCO_25401100",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: OccO: Occupation Ontology, see GlossOER."
+  },
+  {
+    "attribute name": "TargetGroup",
+    "picklist Item (value) or Controlled Vocabulary": "MuseumProfessional",
+    "description": "A person who works in a museum and has specialized knowledge, training, or expertise related to museums and their functions.",
+    "term IRI (or link of source)": "modalia:MuseumProfessional",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isPartOf",
+    "description": "A related resource in which the described resource is physically or logically included.",
+    "term IRI (or link of source)": "dcterms:isPartOf",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "hasPart",
+    "description": "A related resource that is included either physically or logically in the described resource.",
+    "term IRI (or link of source)": "dcterms:hasPart",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isContinuedBy",
+    "description": "A related resource which is the direct continuation of the described resource. This applies to a story, a series of lessons, a serial, a journal etc. Successors typically form part of a common whole—such as a series of lectures.",
+    "term IRI (or link of source)": "citedcat:isContinuedBy",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: https://github.com/europeana/metis-schema/blob/master/src/main/resources/schema_xsds/EDM-COMMON-MAIN.xsd, see GlossOER."
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "continues",
+    "description": "A related resource which is the direct predecessor of the described resource. This applies to a story, a series of lessons, a serial, a journal etc. Predecessors typically form part of a common whole—such as a series of lectures.",
+    "term IRI (or link of source)": "citedcat:continues",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: https://github.com/europeana/metis-schema/blob/master/src/main/resources/schema_xsds/EDM-COMMON-MAIN.xsd, see GlossOER."
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isSupplementTo",
+    "description": "Resource that is complemented by the described augmenting resource.",
+    "term IRI (or link of source)": "citedcat:isSupplementTo",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isSupplementedBy",
+    "description": "Resource that complements the predominant described resource.",
+    "term IRI (or link of source)": "citedcat:isSupplementedBy",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "references",
+    "description": "A related resource that is referenced, cited, or otherwise pointed to by the described resource.",
+    "term IRI (or link of source)": "dcterms:references",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isReferencedBy",
+    "description": "A related resource that references, cites, or otherwise points to the described resource.",
+    "term IRI (or link of source)": "dcterms:isReferencedBy",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "describes",
+    "description": "A related resource that is described by the resource.",
+    "term IRI (or link of source)": "modalia:describes",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isDescribedBy",
+    "description": "A related resource that provides a description (detailed account) of the described resource. This can be a manual, instructions, a documentation, a cookbook, a README file, or something similar.",
+    "term IRI (or link of source)": "modalia:isDescribedBy",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isTranslationOf",
+    "description": "The related resource that this OER has been translated from. When a resource is shared in one language, then later translated to another language, use \"isTranslationOf\" to link the translation to the original.",
+    "term IRI (or link of source)": "modalia:isTranslationOf",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "If the direction of the translation is intransparent or the relatedWork was created in parallel to the resource, hasTranslation is suitable. The label is taken from DataCite, also the modified definition."
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "hasTranslation",
+    "description": "A related resource that is a translation of the content of the described resource. When a resource is shared in one language, then later translated to another language, use \"hasTranslation\" to link the original resource to its translation. When a resource is released at the same time in multiple languages, use \"hasTranslation\" to connect the works to each other in both directions.",
+    "term IRI (or link of source)": "modalia:hasTranslation",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "In contrast to schema: workTranslation, this can be used as symmetric relation. The label is taken from DataCite."
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isPreviousVersionOf",
+    "description": "The related work is a new version or edition of the described resource, where the new version has been modified or updated.",
+    "term IRI (or link of source)": "modalia:isPreviousVersionOf",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "For the sources, see GlossOER."
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isNewVersionOf",
+    "description": "The related work is a previous version or edition of the described resource, of which the described resource has been modified or updated.",
+    "term IRI (or link of source)": "modalia:isNewVersionOf",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "For the sources, see GlossOER."
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isVersionOf",
+    "description": "A related resource of which the described resource is a version or edition. Can be used instead of isPreviousVersionOf and isNewVersionOf, if the sequence of versioning is unclear.",
+    "term IRI (or link of source)": "modalia:isVersionOf",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "Adaptations should be covered by isBasedOn."
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isIdenticalTo",
+    "description": "The related work is the same as the described resource but is saved on another location, maybe another institution.",
+    "term IRI (or link of source)": "modalia:isIdenticalTo",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isBasedOn",
+    "description": "A resource from which this work is derived or from which it is a modification or adaptation.",
+    "term IRI (or link of source)": "schema:isBasedOn",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "replaces",
+    "description": "A related resource that is supplanted, displaced, or superseded by the described resource.",
+    "term IRI (or link of source)": "dcterms:replaces",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "RelatedWork",
+    "picklist Item (value) or Controlled Vocabulary": "isReplacedBy",
+    "description": "A related resource that supplants, displaces, or supersedes the described resource.",
+    "term IRI (or link of source)": "dcterms:isReplacedBy",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": null
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Annotator",
+    "description": "A person who makes manuscript annotations on an item.",
+    "term IRI (or link of source)": "modalia:Annotator",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: https://id.loc.gov/vocabulary/relators/ann.html, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "ContactPerson",
+    "description": "Person with knowledge of how to access, troubleshoot, or otherwise field issues related to the resource.",
+    "term IRI (or link of source)": "modalia:ContactPerson",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nscopeNote from the source: May also be the \"Point of Contact\" in an organisation that controls access to the resource, if that organisation is different from the Publisher, Distributor, and Data Manager."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "DataCollector",
+    "description": "Person/institution responsible for finding or gathering/collecting data under the guidelines of the author(s) or Principal Investigator (PI).",
+    "term IRI (or link of source)": "modalia:DataCollector",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nscopeNote from the source: May also be used when crediting survey conductors, interviewers, event or condition observers, or persons responsible for monitoring key instrument data."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "DataCurator",
+    "description": "A data curator is a person tasked with reviewing, enhancing, cleaning, or standardizing metadata and the associated data submitted for storage, use, and maintenance within a data centre or repository.",
+    "term IRI (or link of source)": "modalia:DataCurator",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nMore scope information in the GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "DataManager",
+    "description": "Person (or organisation with a staff of data managers, such as a data centre) responsible for maintaining the finished resource.",
+    "term IRI (or link of source)": "modalia:DataManager",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nscopeNote from the source: The work done by this person or organisation ensures that the resource is periodically 'refreshed' in terms of software/hardware support, is kept available or is protected from unauthorized access, is stored in accordance with industry standards, and is handled in accordance with the records management requirements applicable to it."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Distributor",
+    "description": "Institution tasked with responsibility to generate/disseminate copies of the resource in either electronic or print form.",
+    "term IRI (or link of source)": "modalia:Distributor",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nscopeNote from the source: Works stored in more than one archive/repository may credit each as a distributor."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Editor",
+    "description": "A person who oversees the details related to the publication format of the resource.",
+    "term IRI (or link of source)": "modalia:Editor",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Producer",
+    "description": "A person or organisation responsible for the artistry and form of a media product.",
+    "term IRI (or link of source)": "modalia:Producer",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nscopeNote from the source: In the data industry, this may be a company 'producing' DVDs that package data for future dissemination by a distributor."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "HostingInstitution",
+    "description": "The organisation allowing the resource to be available on the Internet through the provision of its hardware/software/operating support.",
+    "term IRI (or link of source)": "modalia:HostingInstitution",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nScopeNote from the source: This role normally falls on the University, research center or organization where the data center/data repository belongs."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Interviewer",
+    "description": "A person, family, or organization responsible for creating or contributing to a resource by acting as an interviewer, reporter, pollster, or some other information gathering agent.",
+    "term IRI (or link of source)": "modalia:Interviewer",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: https://id.loc.gov/vocabulary/relators/ivr.html, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Interviewee",
+    "description": "A person, family, or organization responsible for creating or contributing to a resource by responding to an interviewer, usually a reporter, pollster, or some other information gathering agent.",
+    "term IRI (or link of source)": "modalia:Interviewee",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: https://id.loc.gov/vocabulary/relators/ive.html, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "MetadataContact",
+    "description": "A person or organization primarily responsible for compiling and maintaining the original description of a metadata set (e.g., geospatial metadata set).",
+    "term IRI (or link of source)": "modalia:MetadataContact",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: http://id.loc.gov/vocabulary/relators/mdc, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "SoftwareDeveloper",
+    "description": "A person primarily responsible for programming, software development, designing computer programs, implementation of the computer code and supporting algorithms, and testing of existing code components.",
+    "term IRI (or link of source)": "modalia:SoftwareDeveloper",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition: CRedit, p. 8, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "ProjectLeader",
+    "description": "Person officially designated as head of project team or sub-project team instrumental in the work necessary to development of the resource.",
+    "term IRI (or link of source)": "modalia:ProjectLeader",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "ProjectManager",
+    "description": "Person officially designated as manager of a project.",
+    "term IRI (or link of source)": "modalia:ProjectManager",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nscopeNote from the source: The manager of a project normally has more administrative responsibility than actual work involvement."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "ProjectMember",
+    "description": "Person on the membership list of a designated project/project team.",
+    "term IRI (or link of source)": "modalia:ProjectMember",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "RegistrationAgency",
+    "description": "Institution/organisation officially appointed by a Registration Authority to handle specific tasks within a defined area of responsibility.",
+    "term IRI (or link of source)": "modalia:RegistrationAgency",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "RegistrationAuthority",
+    "description": "A standards-setting body from which Registration Agencies obtain official recognition and guidance.",
+    "term IRI (or link of source)": "modalia:RegistrationAuthority",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "ResearchGroup",
+    "description": "A group of individuals with a lab, department, or division that has a specifically defined focus of activity.",
+    "term IRI (or link of source)": "modalia:ResearchGroup",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nscopeNote from the source: May operate at a narrower level of scope; may or may not hold less administrative responsibility than a project team."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Researcher",
+    "description": "A person involved in analyzing data or the results of an experiment or formal study. May indicate an intern or assistant to one of the authors who helped with research but who was not so \"key\" as to be listed as an author.",
+    "term IRI (or link of source)": "modalia:Researcher",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nNot identical with TargetGroup Researcher (modalia:Researcher). scopeNote from the source: Should be a person, not an institution. Note that a person involved in the gathering of data would fall under the contributorType 'DataCollector.' The researcher may find additional data online and correlate it to the data collected for the experiment or study, for example."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "RightsHolder",
+    "description": "Person or institution owning or managing property rights, including intellectual property rights over the resource.",
+    "term IRI (or link of source)": "modalia:RightsHolder",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Speaker",
+    "description": "A performer contributing to a resource by speaking words, such as a lecture, speech, etc.",
+    "term IRI (or link of source)": "modalia:Speaker",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition http://id.loc.gov/vocabulary/relators/spk, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Sponsor",
+    "description": "Person or organisation that issued a contract or under the auspices of which a work has been written, printed, published, developed, etc.",
+    "term IRI (or link of source)": "modalia:Sponsor",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nscopeNote from the source: Includes organisations that provide in-kind support, through donation, provision of people or a facility or instrumentation necessary for the development of the resource, etc."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Supervisor",
+    "description": "Designated administrator over one or more groups/teams working to produce a resource, or over one or more steps of a development process.",
+    "term IRI (or link of source)": "modalia:Supervisor",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Teacher (contributor)",
+    "description": "A performer contributing to a resource by giving instruction or providing a demonstration.",
+    "term IRI (or link of source)": "modalia:TeacherContributorRole",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition http://id.loc.gov/vocabulary/relators/tch, see GlossOER.\nNot identical with modalia:TeacherRole."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Translator",
+    "description": "A person, organization, or automated system responsible for converting the content of a resource from one language into another, preserving its meaning and intended message.",
+    "term IRI (or link of source)": "modalia:Translator",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "WorkPackageLeader",
+    "description": "A Work Package is a recognized data product, not all of which is included in publication. The package, instead, may include notes, discarded documents, etc. The Work Package Leader is responsible for ensuring the comprehensive contents, versioning, and availability of the Work Package during the development of the resource.",
+    "term IRI (or link of source)": "modalia:WorkPackageLeader",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "RelatedPerson",
+    "description": "A person without a specifically defined role in the development of the resource, but who is someone the author wishes to recognize.",
+    "term IRI (or link of source)": "modalia:RelatedPerson",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nscopeNote from the source: This person could be an author's intellectual mentor, a person providing intellectual leadership in the discipline or subject domain, etc."
+  },
+  {
+    "attribute name": "Contributors",
+    "picklist Item (value) or Controlled Vocabulary": "Other",
+    "description": "Any person or institution making a significant contribution to the development and/or maintenance of the resource, but whose contribution is not adequately described by any of the other values for contributor.",
+    "term IRI (or link of source)": "modalia:OtherRole",
+    "Picklist Item (PI) Controlled Vocabulary List (CVL)": "PI",
+    "comment": "source of definition DataCite, m4i, see GlossOER.\nscopeNote from the source: Could be a photographer, artist, or writer whose contribution helped to publicize the resource (as opposed to creating it), a reviewer/proofreader of the resource, someone providing administrative services to the author (such as depositing updates into an online repository, analysing usage, etc.), or one of many other roles."
+  }
+]
