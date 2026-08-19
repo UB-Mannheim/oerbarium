@@ -34,14 +34,14 @@ uv sync
 
 ## LLM Configuration
 
-> The LLM configuration expects an OpenAI compatible endpoint.
+> The LLM configuration expects an OpenAI compatible endpoint. **Only models with tool calling capabilities are supported.**
 
 Set these via environment variables or a `config.env` file in the working
 directory:
 
 ```env
-MAKI_API_KEY=your-api-key
-API_BASE_URL=https://maki.uni-mannheim.de/v1
+API_KEY=your-api-key
+API_BASE_URL=https://llmservice.example.org/v1
 MODEL_NAME=qwen3.8-27b-thinking
 ```
 

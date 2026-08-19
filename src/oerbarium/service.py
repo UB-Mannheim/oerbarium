@@ -3,10 +3,15 @@ import io
 import json
 import logging
 import os
+import re
+import string
 import tempfile
 from abc import ABC, abstractmethod
+from collections import Counter
 from pathlib import Path
 from typing import Protocol
+
+from pydantic import ValidationError
 
 from .errors import ClientError, InputError
 from .schema import DaliaInterchangeFormat
@@ -66,6 +71,79 @@ def atomic_write_text(path: Path, text: str) -> None:
         raise
 
 
+def normalize_title(value: str) -> str:
+    """
+    A title reduced to what two spellings of the same title share: case, inner
+    whitespace and surrounding punctuation are ignored.
+    """
+    collapsed = re.sub(r"\s+", " ", value).strip()
+    return collapsed.strip(string.punctuation + string.whitespace).casefold()
+
+
+def resume_key(raw_record: str) -> str | None:
+    """
+    The title a raw input record can be recognised by, or None when it has none
+    — such a record can never be matched against a snapshot and is always parsed.
+    """
+    try:
+        data = json.loads(raw_record)
+    except json.JSONDecodeError:
+        return None
+    if not isinstance(data, dict):
+        return None
+
+    for wanted in ("title", "name"):
+        for key, value in data.items():
+            if key.lower() == wanted and isinstance(value, str) and value.strip():
+                return normalize_title(value)
+    return None
+
+
+def read_snapshot(path: Path, format: str = "json") -> list[DaliaInterchangeFormat]:
+    """
+    The records an earlier run already wrote to `path`, or none when there is
+    nothing to resume from.
+    """
+    if not path.exists():
+        return []
+    text = path.read_text(encoding="utf-8").strip()
+    if not text:
+        return []
+
+    rows = _read_tsv_rows(text, path) if format == "tsv" else _read_json_rows(text, path)
+    try:
+        return [DaliaInterchangeFormat.model_validate(row) for row in rows]
+    except ValidationError as exc:
+        raise InputError(f"{path} is not a DIF V1.4 snapshot: {exc}") from exc
+
+
+def _read_json_rows(text: str, path: Path) -> list[dict]:
+    """The objects of a JSON snapshot."""
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError as exc:
+        raise InputError(f"{path} is not valid JSON: {exc}") from exc
+    if not isinstance(data, list):
+        raise InputError(f"{path} does not hold a JSON array of records.")
+    return data
+
+
+def _read_tsv_rows(text: str, path: Path) -> list[dict]:
+    """The rows of a TSV snapshot, with empty cells back as None."""
+    reader = csv.DictReader(io.StringIO(text), delimiter="\t")
+    fields = DaliaInterchangeFormat.model_fields
+    if reader.fieldnames != list(fields):
+        raise InputError(
+            f"{path} does not carry the DIF V1.4 header. "
+            f"Expected: {', '.join(fields)}."
+        )
+    optional = {name for name, field in fields.items() if not field.is_required()}
+    return [
+        {key: (None if key in optional and not value else value) for key, value in row.items()}
+        for row in reader
+    ]
+
+
 class RecordSource(ABC):
     """A file holding one or more messy OER records."""
 
@@ -120,15 +198,26 @@ class ResultWriter:
     Writes parsed metadata as a JSON array, rewritten atomically after every record.
     """
 
-    def __init__(self, path: Path, format: str = "json"):
+    def __init__(
+        self,
+        path: Path,
+        format: str = "json",
+        existing: list[DaliaInterchangeFormat] | None = None,
+    ):
         self._format = format
         self._path = path
-        self._records: list[DaliaInterchangeFormat] = []
+        self._records: list[DaliaInterchangeFormat] = list(existing or [])
+        self._resumed_count = len(self._records)
 
     @property
     def count(self) -> int:
         """How many records are currently on disk."""
         return len(self._records)
+
+    @property
+    def resumed_count(self) -> int:
+        """How many records were already on disk when this writer took over."""
+        return self._resumed_count
 
     def append(self, record: DaliaInterchangeFormat) -> None:
         """Add a record and rewrite the output file, so the run can be interrupted safely."""
@@ -168,13 +257,19 @@ class DaliaInterchangeFormatParser:
         self._reporter = reporter or NullProgressReporter()
 
     def parse(
-        self, source: RecordSource, sink: ResultSink | None = None
+        self,
+        source: RecordSource,
+        sink: ResultSink | None = None,
+        skip_keys: Counter[str] | None = None,
     ) -> list[DaliaInterchangeFormat]:
         """
         Parse every record, one LLM call each, handing each result to `sink` as it lands.
+
+        `skip_keys` counts the titles an earlier run already parsed: a title seen
+        N times there skips the next N input records carrying it.
         """
         sink = sink or NullResultSink()
-        records = source.read()
+        records = self._remaining(source.read(), skip_keys)
         parsed: list[DaliaInterchangeFormat] = []
         for number, record in enumerate(records, start=1):
             logger.info("Parsing record %s/%s", number, len(records))
@@ -189,3 +284,34 @@ class DaliaInterchangeFormatParser:
             parsed.append(metadata)
             sink.append(metadata)
         return parsed
+
+    def _remaining(
+        self, records: list[str], skip_keys: Counter[str] | None
+    ) -> list[str]:
+        """
+        The records still to parse: those whose title an earlier run has not
+        already written out.
+        """
+        if not skip_keys:
+            return records
+
+        pending = Counter(skip_keys)
+        remaining: list[str] = []
+        skipped = 0
+        untitled = 0
+        for record in records:
+            key = resume_key(record)
+            if key is None:
+                untitled += 1
+            elif pending[key] > 0:
+                pending[key] -= 1
+                skipped += 1
+                continue
+            remaining.append(record)
+
+        logger.info("Skipping %s record(s) already parsed", skipped)
+        if untitled:
+            logger.warning(
+                "%s record(s) carry no title and are parsed again", untitled
+            )
+        return remaining

@@ -1,5 +1,6 @@
 import json
 import logging
+from collections import Counter
 from pathlib import Path
 
 import click
@@ -8,10 +9,13 @@ from .client import MakiClient
 from .config import resolve_api_key, resolve_base_url, resolve_model_name
 from .crawler import DariahCrawler, read_url_list
 from .errors import ClientError, ConfigurationError
+from .schema import DaliaInterchangeFormat
 from .service import (
     DaliaInterchangeFormatParser,
     ResultWriter,
     atomic_write_text,
+    normalize_title,
+    read_snapshot,
     record_source_for,
 )
 from .tools import ToolRegistry
@@ -147,6 +151,13 @@ def crawl_dariah(
     help="API key."
 )
 @click.option(
+    "--resume",
+    is_flag=True,
+    help="Continue an interrupted run: keep the records already in the output file "
+    "and parse only the ones missing from it. Records are matched by title, so a "
+    "record the model retitled is parsed again.",
+)
+@click.option(
     "--strict",
     is_flag=True,
     help="Abort on the first failing record instead of skipping it. "
@@ -165,6 +176,7 @@ def parse_oer(
     model_name: str | None,
     base_url: str | None,
     api_key: str | None,
+    resume: bool,
     strict: bool,
     verbose: bool,
 ) -> None:
@@ -176,8 +188,16 @@ def parse_oer(
         format="%(levelname)s %(name)s: %(message)s",
     )
 
+    existing: list[DaliaInterchangeFormat] = []
     writer = ResultWriter(output_path, format=format)
     try:
+        if resume:
+            existing = read_snapshot(output_path, format=format)
+            writer = ResultWriter(output_path, format=format, existing=existing)
+            if existing:
+                click.echo(f"Resuming from {len(existing)} record(s) in {output_path}")
+        skip_keys = Counter(normalize_title(record.Title) for record in existing)
+
         source = record_source_for(input_path)
         client = MakiClient(
             api_key=resolve_api_key(api_key),
@@ -187,7 +207,7 @@ def parse_oer(
         )
         DaliaInterchangeFormatParser(
             client, strict=strict, reporter=ParsingProgressReporter()
-        ).parse(source, sink=writer)
+        ).parse(source, sink=writer, skip_keys=skip_keys)
     except (ClientError, KeyboardInterrupt) as exc:
         if writer.count:
             click.echo(f"Kept {writer.count} record(s) in {output_path}", err=True)
@@ -195,10 +215,14 @@ def parse_oer(
             raise click.Abort() from exc
         raise click.ClickException(str(exc)) from exc
 
+    added = writer.count - writer.resumed_count
     if not writer.count:
         raise click.ClickException("No record could be parsed.")
+    if not added:
+        click.echo(f"Nothing left to parse: {writer.count} record(s) in {output_path}")
+        return
 
-    click.echo(f"Wrote {writer.count} record(s) to {output_path}")
+    click.echo(f"Wrote {writer.count} record(s) to {output_path} ({added} new)")
 
 
 def _require_model_name(explicit: str | None) -> str:

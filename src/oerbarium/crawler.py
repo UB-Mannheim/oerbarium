@@ -48,7 +48,7 @@ def parse_dariah_resource(soup: BeautifulSoup) -> dict:
 
     def label_siblings(label):
         el = aside.find(
-            lambda t: t.name in ("dt", "div") and t.get_text(strip=True) == label
+            lambda t: t.name in ("dt", "div", "h2") and t.get_text(strip=True) == label
         )
         return el.find_next_siblings() if el else []
 
@@ -79,6 +79,7 @@ def parse_dariah_resource(soup: BeautifulSoup) -> dict:
         "published": field("Published to DARIAH-Campus"),
         "license": field("License"),
         "sources": field("Sources"),
+        "citation": field("Cite as"),
         "description": prose.get_text("\n", strip=True) if prose else None,
     }
 

@@ -27,7 +27,7 @@ class MakiClient:
         model_name: str,
         base_url: str = DEFAULT_BASE_URL,
         tools: ToolRegistry | None = None,
-        timeout: float = 60.0,
+        timeout: float = 180.0,
         max_retries: int = 1,
         max_tool_rounds: int = 5,
         use_structured_output: bool = True,
