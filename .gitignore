@@ -12,6 +12,7 @@ notebooks/
 .old/
 .backup/
 output/
+.DS_Store
 
 # Virtual environments
 .venv
