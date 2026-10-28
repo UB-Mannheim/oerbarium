@@ -1,5 +1,4 @@
 import os
-from pathlib import Path
 
 from dotenv import load_dotenv
 
@@ -11,20 +10,18 @@ API_BASE_URL = "API_BASE_URL"
 MODEL_NAME = "MODEL_NAME"
 
 
-def resolve_api_key(explicit: str | None = None, env_file: str = ENV_FILE) -> str:
-    """Find the API key in the explicit argument, the environment, or config.env."""
+def resolve_api_key(explicit: str | None = None) -> str:
+    """
+    Find the API key in the explicit argument or the environment — never in
+    config.env, so the key is not stored in a file next to the project.
+    """
     if explicit:
         return explicit
     if key := os.getenv(API_KEY):
         return key
 
-    load_dotenv(env_file)
-    if key := os.getenv(API_KEY):
-        return key
-
     raise ConfigurationError(
-        f"No API key found. Set the {API_KEY} environment variable, "
-        f"put {API_KEY}=... in {Path(env_file).resolve()}, "
+        f"No API key found. Set the {API_KEY} environment variable "
         "or pass --api-key."
     )
 

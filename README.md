@@ -37,13 +37,19 @@ uv sync
 
 > The LLM configuration expects an OpenAI compatible endpoint. **Only models with tool calling capabilities are supported.**
 
-Set these via environment variables or a `config.env` file in the working
-directory:
+Set the endpoint and model via environment variables or a `config.env` file in
+the working directory:
 
 ```env
-API_KEY=your-api-key
 API_BASE_URL=https://llmservice.example.org/v1
 MODEL_NAME=qwen3.8-27b-thinking
+```
+
+The API key is **never** read from `config.env`. Set it as an environment
+variable or pass it with `--api-key`:
+
+```bash
+export API_KEY=your-api-key
 ```
 
 ## CLI commands

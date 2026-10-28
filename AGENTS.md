@@ -19,10 +19,11 @@ user-facing reference for every command and option.
 ## LLM configuration
 
 `parse` talks to any OpenAI-compatible endpoint that supports **tool calling** and
-structured output. Settings resolve in this order: CLI flag → environment variable
-→ `config.env` in the working directory (`API_KEY`, `API_BASE_URL`, `MODEL_NAME`;
-see `config.env.example`). `config.env` holds a real key and is gitignored: never
-print, commit or copy its contents.
+structured output. `API_BASE_URL` and `MODEL_NAME` resolve in this order: CLI flag
+→ environment variable → `config.env` in the working directory (see
+`config.env.example`). `API_KEY` comes only from `--api-key` or the environment:
+never add it to `config.env` or `config.env.example`, never read it from a file,
+and never print or commit it.
 
 ## Architecture
 
