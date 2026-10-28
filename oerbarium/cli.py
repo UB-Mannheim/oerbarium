@@ -5,6 +5,13 @@ from pathlib import Path
 
 import click
 
+from .catalogue import (
+    DEFAULT_CATALOGUE,
+    CatalogueMerger,
+    Duplicate,
+    backup_catalogue,
+    read_parsed,
+)
 from .client import LlmClient
 from .config import resolve_api_key, resolve_base_url, resolve_model_name
 from .crawler import DariahCrawler, read_url_list
@@ -31,7 +38,14 @@ class ParsingProgressReporter:
         click.echo(f"[{number}/{total}] Parsing metadata into DIF V1.4 ...")
 
 
-@click.group(no_args_is_help=True)
+class DefinitionOrderGroup(click.Group):
+    """Lists subcommands in the order they are defined, not alphabetically."""
+
+    def list_commands(self, ctx: click.Context) -> list[str]:
+        return list(self.commands)
+
+
+@click.group(cls=DefinitionOrderGroup, no_args_is_help=True)
 def cli() -> None:
     """
     🌳 Collect, parse and map Open Educational Resources (OER) metadata into
@@ -223,6 +237,89 @@ def parse_oer(
         return
 
     click.echo(f"Wrote {writer.count} record(s) to {output_path} ({added} new)")
+
+
+@cli.command("merge", no_args_is_help=True)
+@click.option(
+    "-i",
+    "--input",
+    "input_paths",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    multiple=True,
+    required=True,
+    help="Parsed metadata to merge (.json or .tsv from `parse`). Repeat for several files.",
+)
+@click.option(
+    "-c",
+    "--catalogue",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    default=DEFAULT_CATALOGUE,
+    show_default=True,
+    help="The OER catalogue (.xlsx) to merge into.",
+)
+@click.option(
+    "--force",
+    is_flag=True,
+    help="Merge records even when they are already in the catalogue "
+    "(same Link, or same Title and Authors).",
+)
+@click.option(
+    "-v",
+    "--verbose",
+    is_flag=True,
+    help="Log every merged row."
+)
+def merge_oer(
+    input_paths: tuple[Path, ...],
+    catalogue: Path,
+    force: bool,
+    verbose: bool,
+) -> None:
+    """
+    Merge parsed DIF V1.4 metadata into the OER catalogue (.xlsx).
+    """
+    logging.basicConfig(
+        level=logging.DEBUG if verbose else logging.WARNING,
+        format="%(levelname)s %(name)s: %(message)s",
+    )
+
+    try:
+        records = [record for path in input_paths for record in read_parsed(path)]
+        merger = CatalogueMerger(catalogue)
+        plan = merger.plan(records, force=force)
+
+        for duplicate in plan.skipped:
+            _warn_duplicate(duplicate, "skipped. Use --force to merge anyway.")
+        for duplicate in plan.forced:
+            _warn_duplicate(duplicate, "merged anyway (--force).")
+
+        if not plan.to_write:
+            click.echo(f"Nothing to merge: all {len(records)} record(s) are already in {catalogue}")
+            return
+
+        backup = backup_catalogue(catalogue)
+        click.echo(f"Backed up catalogue to {backup}")
+        report = merger.write(plan)
+    except (ClientError, KeyboardInterrupt) as exc:
+        if isinstance(exc, KeyboardInterrupt):
+            raise click.Abort() from exc
+        raise click.ClickException(str(exc)) from exc
+
+    click.echo(
+        f"Merged {report.count} record(s) into {catalogue} "
+        f"(rows {report.first_row}-{report.last_row}), "
+        f"skipped {len(plan.skipped)} duplicate(s)"
+    )
+    click.echo(f"Validation passed: {report.count} new row(s) in the right columns, existing rows unchanged")
+
+
+def _warn_duplicate(duplicate: Duplicate, outcome: str) -> None:
+    record = duplicate.record
+    click.echo(
+        f'Warning: "{record.metadata.Title}" ({record.label}) duplicates '
+        f"{duplicate.found_at} (matched on {duplicate.matched_on}) - {outcome}",
+        err=True,
+    )
 
 
 def _require_model_name(explicit: str | None) -> str:

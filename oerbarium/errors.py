@@ -15,3 +15,6 @@ class InputError(ClientError):
 
 class CrawlError(ClientError):
     """A resource page could not be fetched or parsed."""
+
+class CatalogueError(ClientError):
+    """The OER catalogue cannot be read, merged into or validated."""

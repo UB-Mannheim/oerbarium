@@ -8,8 +8,9 @@ CLI to collect, parse and map Open Educational Resources (OER) metadata into the
 - [Installation](#installation)
 - [LLM configuration](#llm-configuration)
 - [CLI commands](#cli-commands)
-  - [`oerbarium parse`](#oerbarium-parse)
   - [`oerbarium crawl dariah`](#oerbarium-crawl-dariah)
+  - [`oerbarium parse`](#oerbarium-parse)
+  - [`oerbarium merge`](#oerbarium-merge)
 - [Acknowledgement](#acknowledgement)
 
 ## Installation
@@ -63,7 +64,23 @@ Options:
 Commands:
   crawl  Collect raw OER metadata from a source site.
   parse  Parse messy OER metadata into DIF V1.4.
+  merge  Merge parsed DIF V1.4 metadata into the OER catalogue (.xlsx).
 ```
+
+### `oerbarium crawl dariah`
+
+Crawl DARIAH Campus resource pages into a JSON array of raw metadata.
+
+```bash
+oerbarium crawl dariah -i urls.txt -o crawled.json
+```
+
+| Option | Description |
+| --- | --- |
+| `-i, --input` | Path to a `.txt` file with one URL per line (required) |
+| `-o, --output-path` | Path to write crawled metadata as a JSON array (required) |
+| `--strict` | Abort on the first failing URL instead of skipping it |
+| `-v, --verbose` | Log progress and skipped URLs |
 
 ### `oerbarium parse`
 
@@ -158,20 +175,32 @@ See this example that captures two individual [OERSI](https://oersi.org/) record
 
 ```
 
-### `oerbarium crawl dariah`
+### `oerbarium merge`
 
-Crawl DARIAH Campus resource pages into a JSON array of raw metadata.
+Merge the output of `oerbarium parse` (`.json` or `.tsv`) into the OER catalogue
+(`data/AiDaLi_OER_Katalog.xlsx`, sheet `OER_Catalogue`). Several files can be merged in one go.
 
 ```bash
-oerbarium crawl dariah -i urls.txt -o crawled.json
+oerbarium merge -i parsed_a.json -i parsed_b.tsv
 ```
 
 | Option | Description |
 | --- | --- |
-| `-i, --input` | Path to a `.txt` file with one URL per line (required) |
-| `-o, --output-path` | Path to write crawled metadata as a JSON array (required) |
-| `--strict` | Abort on the first failing URL instead of skipping it |
-| `-v, --verbose` | Log progress and skipped URLs |
+| `-i, --input` | Parsed `.json` or `.tsv` file; repeat for several files (required) |
+| `-c, --catalogue` | Catalogue to merge into (default: `data/AiDaLi_OER_Katalog.xlsx`) |
+| `--force` | Merge records even when they are already in the catalogue |
+| `-v, --verbose` | Log every merged row |
+
+- **Duplicates:** a record counts as already present when its `Link` matches, or when both
+  `Title` and `Authors` match (ignoring case, whitespace, URL scheme/`www.`/trailing slash,
+  ORCIDs and author order). Duplicates are skipped with a warning unless `--force` is given.
+  Records within the input files are checked against each other as well.
+- **Backup:** before anything is written, the catalogue is copied to
+  `data/.backup/<name>_<timestamp>.xlsx`.
+- **Validation:** the merged workbook is saved to a temporary file and checked: same header,
+  table range extended to the new rows, existing rows unchanged, and every new cell in the
+  right column. The catalogue is only replaced when all checks pass.
+- New rows get the next `No`; `Publisher` is left empty.
 
 ## Acknowledgement
 
