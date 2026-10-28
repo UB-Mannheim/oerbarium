@@ -52,6 +52,9 @@ variable or pass it with `--api-key`:
 export API_KEY=your-api-key
 ```
 
+All other settings (default catalogue path, timeouts, tool-call rounds, packaged
+metadata files, ...) live in `oerbarium/config.py`.
+
 ## CLI commands
 
 The CLI is installed as `oerbarium`.
@@ -193,7 +196,7 @@ oerbarium merge -i parsed_a.json -i parsed_b.tsv
 | Option | Description |
 | --- | --- |
 | `-i, --input` | Parsed `.json` or `.tsv` file; repeat for several files (required) |
-| `-c, --catalogue` | Catalogue to merge into (default: `data/AiDaLi_OER_Katalog.xlsx`) |
+| `-c, --catalogue` | Catalogue to merge into (default: `data/catalogue/AiDaLi_OER_Katalog.xlsx`, set in `config.py`) |
 | `--force` | Merge records even when they are already in the catalogue |
 | `-v, --verbose` | Log every merged row |
 
@@ -202,7 +205,7 @@ oerbarium merge -i parsed_a.json -i parsed_b.tsv
   ORCIDs and author order). Duplicates are skipped with a warning unless `--force` is given.
   Records within the input files are checked against each other as well.
 - **Backup:** before anything is written, the catalogue is copied to
-  `data/.backup/<name>_<timestamp>.xlsx`.
+  `.backup/<name>_<timestamp>.xlsx` next to it.
 - **Validation:** the merged workbook is saved to a temporary file and checked: same header,
   table range extended to the new rows, existing rows unchanged, and every new cell in the
   right column. The catalogue is only replaced when all checks pass.

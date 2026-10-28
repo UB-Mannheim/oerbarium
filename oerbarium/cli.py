@@ -6,14 +6,21 @@ from pathlib import Path
 import click
 
 from .catalogue import (
-    DEFAULT_CATALOGUE,
     CatalogueMerger,
     Duplicate,
     backup_catalogue,
     read_parsed,
 )
 from .client import LlmClient
-from .config import resolve_api_key, resolve_base_url, resolve_model_name
+from .config import (
+    DEFAULT_CATALOGUE_PATH,
+    DEFAULT_PARSE_OUTPUT_FORMAT,
+    LOG_FORMAT,
+    MODEL_NAME_ENV_VAR,
+    resolve_api_key,
+    resolve_base_url,
+    resolve_model_name,
+)
 from .crawler import DariahCrawler, read_url_list
 from .errors import ClientError, ConfigurationError
 from .schema import DaliaInterchangeFormat
@@ -98,7 +105,7 @@ def crawl_dariah(
     """
     logging.basicConfig(
         level=logging.DEBUG if verbose else logging.WARNING,
-        format="%(levelname)s %(name)s: %(message)s",
+        format=LOG_FORMAT,
     )
 
     try:
@@ -143,7 +150,7 @@ def crawl_dariah(
     "-f",
     "--format",
     type=click.Choice(["json", "tsv"]),
-    default="json",
+    default=DEFAULT_PARSE_OUTPUT_FORMAT,
     show_default=True,
     help="Data format of the parsed output file.",
 )
@@ -199,7 +206,7 @@ def parse_oer(
     """
     logging.basicConfig(
         level=logging.DEBUG if verbose else logging.WARNING,
-        format="%(levelname)s %(name)s: %(message)s",
+        format=LOG_FORMAT,
     )
 
     existing: list[DaliaInterchangeFormat] = []
@@ -253,7 +260,7 @@ def parse_oer(
     "-c",
     "--catalogue",
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
-    default=DEFAULT_CATALOGUE,
+    default=DEFAULT_CATALOGUE_PATH,
     show_default=True,
     help="The OER catalogue (.xlsx) to merge into.",
 )
@@ -280,7 +287,7 @@ def merge_oer(
     """
     logging.basicConfig(
         level=logging.DEBUG if verbose else logging.WARNING,
-        format="%(levelname)s %(name)s: %(message)s",
+        format=LOG_FORMAT,
     )
 
     try:
@@ -327,7 +334,7 @@ def _require_model_name(explicit: str | None) -> str:
     if model_name := resolve_model_name(explicit):
         return model_name
     raise ConfigurationError(
-        "No model name found. Set MODEL_NAME in the environment or config.env, "
+        f"No model name found. Set {MODEL_NAME_ENV_VAR} in the environment or config.env, "
         "or pass --model-name."
     )
 

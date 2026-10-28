@@ -4,6 +4,7 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 
+from .config import CRAWL_TIMEOUT_SECONDS
 from .errors import CrawlError, InputError
 from .service import NullProgressReporter, ProgressReporter
 
@@ -91,7 +92,7 @@ class DariahCrawler:
         self,
         strict: bool = False,
         reporter: ProgressReporter | None = None,
-        timeout: float = 30.0,
+        timeout: float = CRAWL_TIMEOUT_SECONDS,
     ):
         self._strict = strict
         self._reporter = reporter or NullProgressReporter()

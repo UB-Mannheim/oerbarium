@@ -5,7 +5,14 @@ import re
 from openai import APIError, OpenAI
 from pydantic import ValidationError
 
-from .config import API_BASE_URL, API_KEY
+from .config import (
+    API_KEY_ENV_VAR,
+    LLM_MAX_RETRIES,
+    LLM_MAX_TOOL_ROUNDS,
+    LLM_TIMEOUT_SECONDS,
+    LLM_USE_STRUCTURED_OUTPUT,
+    MODEL_NAME_ENV_VAR,
+)
 from .errors import ClientError, ConfigurationError, ParsingError
 from .prompts import DEFAULT_SYSTEM_PROMPT
 from .schema import DaliaInterchangeFormat
@@ -25,20 +32,20 @@ class LlmClient:
         self,
         api_key: str,
         model_name: str,
-        base_url: str = API_BASE_URL,
+        base_url: str | None = None,
         tools: ToolRegistry | None = None,
-        timeout: float = 180.0,
-        max_retries: int = 1,
-        max_tool_rounds: int = 5,
-        use_structured_output: bool = True,
+        timeout: float = LLM_TIMEOUT_SECONDS,
+        max_retries: int = LLM_MAX_RETRIES,
+        max_tool_rounds: int = LLM_MAX_TOOL_ROUNDS,
+        use_structured_output: bool = LLM_USE_STRUCTURED_OUTPUT,
     ):
         if not api_key:
             raise ConfigurationError(
-                f"API key is empty. Set {API_KEY} or pass --api-key."
+                f"API key is empty. Set {API_KEY_ENV_VAR} or pass --api-key."
             )
         if not model_name:
             raise ConfigurationError(
-                "No model name given. Set MODEL_NAME or pass --model-name."
+                f"No model name given. Set {MODEL_NAME_ENV_VAR} or pass --model-name."
             )
         self._base_url = base_url
         self._timeout = timeout

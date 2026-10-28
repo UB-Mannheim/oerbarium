@@ -2,10 +2,13 @@ import json
 from functools import cached_property
 from importlib.resources import files
 
-METADATA_PACKAGE = "oerbarium.metadata"
-HFS_MAPPING_FILE = "hochschulfaechersystematik_mapping.json"
-PICKLISTS_FILE = "metadata_picklists.json"
-EXPLANATIONS_FILE = "metadata_explanation.json"
+from .config import (
+    FIELD_EXPLANATIONS_FILENAME,
+    HFS_MAPPING_FILENAME,
+    METADATA_PACKAGE,
+    PICKLISTS_FILENAME,
+)
+
 ATTRIBUTE_KEY = "attribute name"
 
 
@@ -19,7 +22,7 @@ def _load(filename: str):
 class DisciplineIndex:
     """The Hochschulfächersystematik: German subject name -> IRI."""
 
-    def __init__(self, filename: str = HFS_MAPPING_FILE):
+    def __init__(self, filename: str = HFS_MAPPING_FILENAME):
         self._filename = filename
 
     @cached_property
@@ -42,7 +45,7 @@ class DisciplineIndex:
 class PicklistCatalog:
     """Allowed picklist items and controlled vocabularies, grouped by field."""
 
-    def __init__(self, filename: str = PICKLISTS_FILE):
+    def __init__(self, filename: str = PICKLISTS_FILENAME):
         self._filename = filename
 
     @cached_property
@@ -64,7 +67,7 @@ class PicklistCatalog:
 class FieldExplanations:
     """Prose descriptions, constraints and examples for each metadata field."""
 
-    def __init__(self, filename: str = EXPLANATIONS_FILE):
+    def __init__(self, filename: str = FIELD_EXPLANATIONS_FILENAME):
         self._filename = filename
 
     @cached_property

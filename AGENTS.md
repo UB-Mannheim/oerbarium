@@ -25,10 +25,15 @@ structured output. `API_BASE_URL` and `MODEL_NAME` resolve in this order: CLI fl
 never add it to `config.env` or `config.env.example`, never read it from a file,
 and never print or commit it.
 
+Every other app setting (paths, file names, timeouts, limits, defaults) is a
+constant in `config.py`. Don't hard-code new settings in other modules: add them
+there with a name that says what they are (`..._PATH`, `..._SECONDS`, `..._ENV_VAR`).
+
 ## Architecture
 
 ```
 cli.py           click commands; the only place that echoes to the terminal
+config.py        all app settings as constants, plus API key/base URL/model resolution
 crawler.py       DariahCrawler: fetches DARIAH-Campus pages (requests + bs4) into raw dicts
 service.py       record sources (.txt/.json), DaliaInterchangeFormatParser, ResultWriter,
                  resume logic, atomic_write_text
@@ -43,7 +48,7 @@ errors.py        ClientError and its subclasses
 metadata/        packaged vocabularies (Hochschulfächersystematik, picklists, field docs)
 ```
 
-Data flow: `crawl` → raw JSON array → `parse` → DIF JSON/TSV → `merge` → `data/AiDaLi_OER_Katalog.xlsx`.
+Data flow: `crawl` → raw JSON array → `parse` → DIF JSON/TSV → `merge` → `data/catalogue/AiDaLi_OER_Katalog.xlsx`.
 
 ## Conventions
 
@@ -76,8 +81,8 @@ Data flow: `crawl` → raw JSON array → `parse` → DIF JSON/TSV → `merge` �
 
 ## Data and files
 
-- `data/AiDaLi_OER_Katalog.xlsx` is the real catalogue. Don't edit or `merge` into it
-  while experimenting: pass a copy via `-c`. `merge` backs up to `data/.backup/` and
+- `data/catalogue/AiDaLi_OER_Katalog.xlsx` is the real catalogue. Don't edit or `merge` into it
+  while experimenting: pass a copy via `-c`. `merge` backs up to `data/catalogue/.backup/` and
   validates before replacing the file, and those guarantees must stay intact.
   Ignore Excel lock files such as `~$AiDaLi_OER_Katalog.xlsx`.
 - `output/`, `notebooks/`, `.backup/` and `*.env` are gitignored. Put scratch results

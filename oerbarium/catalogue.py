@@ -16,15 +16,12 @@ from openpyxl.utils.exceptions import InvalidFileException
 from openpyxl.worksheet.table import Table
 from openpyxl.worksheet.worksheet import Worksheet
 
+from .config import CATALOGUE_BACKUP_DIR_NAME, CATALOGUE_SHEET_NAME
 from .errors import CatalogueError, InputError
 from .schema import DaliaInterchangeFormat
 from .service import normalize_title, read_snapshot
 
 logger = logging.getLogger(__name__)
-
-DEFAULT_CATALOGUE = Path("data/AiDaLi_OER_Katalog.xlsx")
-SHEET_NAME = "OER_Catalogue"
-BACKUP_DIR_NAME = ".backup"
 
 DIF_FIELDS = list(DaliaInterchangeFormat.model_fields)
 CATALOGUE_COLUMNS = ["No", *DIF_FIELDS, "Publisher"]
@@ -97,7 +94,7 @@ def read_parsed(path: Path) -> list[ParsedRecord]:
 
 def backup_catalogue(path: Path) -> Path:
     """Copy the catalogue into a timestamped file in `.backup/` next to it."""
-    backup_dir = path.parent / BACKUP_DIR_NAME
+    backup_dir = path.parent / CATALOGUE_BACKUP_DIR_NAME
     backup_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     target = backup_dir / f"{path.stem}_{stamp}{path.suffix}"
@@ -311,9 +308,9 @@ def _open_workbook(path: Path) -> Workbook:
 
 
 def _catalogue_sheet(workbook: Workbook, path: Path) -> Worksheet:
-    if SHEET_NAME not in workbook.sheetnames:
-        raise CatalogueError(f"{path} has no sheet '{SHEET_NAME}'.")
-    return workbook[SHEET_NAME]
+    if CATALOGUE_SHEET_NAME not in workbook.sheetnames:
+        raise CatalogueError(f"{path} has no sheet '{CATALOGUE_SHEET_NAME}'.")
+    return workbook[CATALOGUE_SHEET_NAME]
 
 
 def _check_header(sheet: Worksheet, path: Path) -> None:
@@ -333,7 +330,7 @@ def _catalogue_table(sheet: Worksheet, path: Path) -> Table:
             return table
     raise CatalogueError(
         f"{path} has no table spanning columns A:{get_column_letter(len(CATALOGUE_COLUMNS))} "
-        f"from row 1 on sheet '{SHEET_NAME}'."
+        f"from row 1 on sheet '{CATALOGUE_SHEET_NAME}'."
     )
 
 

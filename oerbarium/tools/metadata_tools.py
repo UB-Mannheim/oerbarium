@@ -1,9 +1,8 @@
 import json
 
+from ..config import DISCIPLINE_LOOKUP_MAX_HITS
 from ..resources import DisciplineIndex, FieldExplanations, PicklistCatalog
 from .base import LlmTool
-
-MAX_DISCIPLINE_HITS = 5
 
 
 def _dump(payload) -> str:
@@ -39,7 +38,7 @@ class LookupDisciplineTool(LlmTool):
         }
 
     def run(self, query: str = "", **_) -> str:
-        matches = self._index.search(query, limit=MAX_DISCIPLINE_HITS)
+        matches = self._index.search(query, limit=DISCIPLINE_LOOKUP_MAX_HITS)
         if not matches:
             return _dump(
                 {
