@@ -180,11 +180,36 @@ class JsonRecordSource(RecordSource):
         return [json.dumps(record, ensure_ascii=False, indent=2) for record in records]
 
 
+class JsonLinesRecordSource(RecordSource):
+    """A JSON Lines file: one record per non-empty line."""
+
+    def read(self) -> list[str]:
+        records = []
+        lines = self._path.read_text(encoding="utf-8").splitlines()
+        for number, line in enumerate(lines, start=1):
+            if not line.strip():
+                continue
+            try:
+                records.append(json.loads(line))
+            except json.JSONDecodeError as exc:
+                raise InputError(
+                    f"{self._path} line {number} is not valid JSON: {exc}"
+                ) from exc
+
+        if not records:
+            raise InputError(f"{self._path} contains no records.")
+        return [json.dumps(record, ensure_ascii=False, indent=2) for record in records]
+
+
 def record_source_for(path: Path) -> RecordSource:
     """
     Pick the source matching the file's suffix.
     """
-    sources = {".txt": TextRecordSource, ".json": JsonRecordSource}
+    sources = {
+        ".txt": TextRecordSource,
+        ".json": JsonRecordSource,
+        ".jsonl": JsonLinesRecordSource,
+    }
     source = sources.get(path.suffix.lower())
     if source is None:
         raise InputError(

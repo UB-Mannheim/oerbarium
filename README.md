@@ -105,7 +105,7 @@ oerbarium parse -i crawled.json -o parsed.json
 
 | Option | Description |
 | --- | --- |
-| `-i, --input` | Input file: `.txt` (one OER per file) or `.json` (one OER per list item) (required) |
+| `-i, --input` | Input file: `.txt` (one OER per file), `.json` (one OER per list item) or `.jsonl` (one OER per line) (required) |
 | `-o, --output-path` | Output path; rewritten after every parsed record (required) |
 | `-f, --format` | Output format: `json` (default) or `tsv` |
 | `-m, --model-name` | LLM model name (overrides `MODEL_NAME`) |
@@ -182,6 +182,15 @@ See this example that captures two individual [OERSI](https://oersi.org/) record
    {"image":"https://www.zoerr.de/edu-sharing/preview?nodeId=ec3d6e8e-7f71-4a56-bd6e-8e7f719a562d&storeProtocol=workspace&storeId=SpacesStore&dontcache=1787097056055","creator":[{"name":"Team MaDaLi²","type":"Person"}],"keywords":["MaDaLi²","H5P","Offene Lizenzen","CC Lizenzen","Datenkompetenz (Data Literacy)","Urheberrecht (Copyright, Urheberschutz)","E-Learning (Learning on demand, Digitales Lernen)","Datenschutz (Datenschutzrecht, Datenverarbeitung)","Forschungsdaten (Research Data)"],"about":[{"prefLabel":{"cs":"Mezioborový","de":"Fachübergreifend","sv":"Tvärvetenskapligt","uk":"Міждисциплінарний","el":"Διεπιστημονικό","sk":"Interdisciplinárny","en":"Interdisciplinary","it":"Interdisciplinare","fr":"Interdisciplinaire","es":"Interdisciplinario"},"id":"https://w3id.org/kim/hochschulfaechersystematik/n0"}],"description":"Das zweite Modul des E-Learning-Kurses Mannheim Data Literacy (MaDaLi²) führt in zentrale rechtliche, ethische und sicherheitsrelevante Aspekte des verantwortungsvollen Umgangs mit Daten ein. Im Mittelpunkt stehen Datenschutzgrundsätze und einschlägige gesetzliche Rahmenbedingungen in Deutschland und der EU, die Unterscheidung zwischen personenbezogenen und besonderen Kategorien personenbezogener Daten sowie urheber- und lizenzrechtliche Fragen. Ergänzend werden Grundlagen der Datensicherheit behandelt. Ein optionaler Exkurs bietet vertiefende Informationen zur informierten Einwilligung, die insbesondere für empirische Datenerhebungen Relevanz besitzt.\n\nDisclaimer: Dieses Modul wird unter einer CC BY-SA-Lizenz zur Verfügung gestellt. Sofern nicht anders angegeben, stehen auch die einzelnen Inhalte unter einer CC BY-SA-Lizenz. Eine Übersicht der einzelnen Lizenzen findet sich im Metadaten-Abschnitt \"Beziehungen & Versionen\".","inLanguage":["de"],"dateModified":"2026-01-26","isAccessibleForFree":true,"type":["LearningResource"],"mainEntityOfPage":[{"dateCreated":"2026-01-26","provider":{"name":"ZOERR","id":"https://www.zoerr.de","type":"Service"},"dateModified":"2026-01-26","id":"https://www.zoerr.de/edu-sharing/components/render/ec3d6e8e-7f71-4a56-bd6e-8e7f719a562d","type":"WebContent"}],"encoding":[{"contentUrl":"https://www.zoerr.de/edu-sharing/eduservlet/download?nodeId=ec3d6e8e-7f71-4a56-bd6e-8e7f719a562d","contentSize":"540236089","encodingFormat":"application/zip","type":"MediaObject"},{"embedUrl":"https://www.zoerr.de/edu-sharing/eduservlet/render?node_id=ec3d6e8e-7f71-4a56-bd6e-8e7f719a562d","type":"MediaObject"}],"@context":["https://w3id.org/kim/amb/context.jsonld",{"@language":"de"}],"conditionsOfAccess":{"prefLabel":{"cs":"přihlášení není vyžadováno","de":"keine Anmeldung erforderlich","uk":"вхід без авторизації","en":"no login required","nl":"geen login vereist"},"id":"http://w3id.org/kim/conditionsOfAccess/no_login"},"license":{"id":"https://creativecommons.org/licenses/by-sa/4.0/"},"dateCreated":"2026-01-26","name":"MaDaLi² – Modul 2: Datenethik beachten","sourceOrganization":[{"name":"Universität Mannheim","location":[{"address":{"addressCountry":"DE","addressLocality":"Mannheim","addressRegion":"Baden-Wurttemberg"}}],"id":"https://ror.org/031bsb921","type":"Organization"}],"id":"https://www.zoerr.de/edu-sharing/components/render/ec3d6e8e-7f71-4a56-bd6e-8e7f719a562d","learningResourceType":[{"prefLabel":{"de":"Kurs","sv":"Kurs","fi":"Kurssi","el":"Μάθημα","en":"Course","it":"Corso","fr":"Cours","es":"Curso","cs":"Kurz","uk":"Курс","sk":"Kurz","da":"Kursus","nl":"Cursus"},"id":"https://w3id.org/kim/hcrt/course"}]}
 ]
 
+```
+
+##### Option 3: `.jsonl` (JSON Lines)
+
+One JSON object per line, as many OER repositories and APIs export it. Each non-empty line is parsed as one OER; as with `.json`, the structure of the individual records is not relevant for processing.
+
+```jsonl
+{"name": "MaDaLi² – Module 1: Daten verstehen", "license": {"id": "https://creativecommons.org/licenses/by-sa/4.0/"}, "inLanguage": ["de"]}
+{"name": "MaDaLi² – Modul 2: Datenethik beachten", "license": {"id": "https://creativecommons.org/licenses/by-sa/4.0/"}, "inLanguage": ["de"]}
 ```
 
 ### `oerbarium merge`

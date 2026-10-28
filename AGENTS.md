@@ -35,7 +35,7 @@ there with a name that says what they are (`..._PATH`, `..._SECONDS`, `..._ENV_V
 cli.py           click commands; the only place that echoes to the terminal
 config.py        all app settings as constants, plus API key/base URL/model resolution
 crawler.py       DariahCrawler: fetches DARIAH-Campus pages (requests + bs4) into raw dicts
-service.py       record sources (.txt/.json), DaliaInterchangeFormatParser, ResultWriter,
+service.py       record sources (.txt/.json/.jsonl), DaliaInterchangeFormatParser, ResultWriter,
                  resume logic, atomic_write_text
 client.py        LlmClient: chat completions loop, answers tool calls, validates the reply
 schema.py        DaliaInterchangeFormat (pydantic): the 17 DIF fields, also the

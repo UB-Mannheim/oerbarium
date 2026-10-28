@@ -137,7 +137,10 @@ def crawl_dariah(
     "input_path",
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
     required=True,
-    help="Messy OER metadata to parse (.txt = one OER, .json = one per list item).",
+    help=(
+        "Messy OER metadata to parse "
+        "(.txt = one OER, .json = one per list item, .jsonl = one per line)."
+    ),
 )
 @click.option(
     "-o",
