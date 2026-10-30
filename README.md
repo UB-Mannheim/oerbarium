@@ -11,6 +11,7 @@ CLI to collect, parse and map Open Educational Resources (OER) metadata into the
   - [`oerbarium crawl dariah`](#oerbarium-crawl-dariah)
   - [`oerbarium parse`](#oerbarium-parse)
   - [`oerbarium merge`](#oerbarium-merge)
+- [Funding](#funding)
 - [Acknowledgement](#acknowledgement)
 
 ## Installation
@@ -219,6 +220,10 @@ oerbarium merge -i parsed_a.json -i parsed_b.tsv
   table range extended to the new rows, existing rows unchanged, and every new cell in the
   right column. The catalogue is only replaced when all checks pass.
 - New rows get the next `No`; `Publisher` is left empty.
+
+## Funding
+
+`Oerbarium` is a project outcome of [AiDaLi: Promoting AI and Data Literacy Through OER Production](https://transferkiosk.net/p/102025-durch-oer-produktion-zu-ai-und) (2026-2028), funded by [Stiftung Innovation in der Hochschullehre](https://stiftung-hochschullehre.de/en/).
 
 ## Acknowledgement
 
