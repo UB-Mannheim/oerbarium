@@ -1,6 +1,6 @@
 [project]
 name = "oerbarium"
-version = "0.1.0"
+version = "0.2.0"
 description = "Collect, parse and map Open Educational Resources (OER) metadata into the DALIA Interchange Format (DIF V1.4)"
 readme = "README.md"
 authors = [
