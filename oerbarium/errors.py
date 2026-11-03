@@ -16,5 +16,8 @@ class InputError(ClientError):
 class CrawlError(ClientError):
     """A resource page could not be fetched or parsed."""
 
+class RateLimitError(CrawlError):
+    """GitHub's API rate limit is exhausted, so every further request would fail."""
+
 class CatalogueError(ClientError):
     """The OER catalogue cannot be read, merged into or validated."""

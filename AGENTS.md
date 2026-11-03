@@ -9,7 +9,7 @@ user-facing reference for every command and option.
 ## Setup and commands
 
 - Python 3.13 (`.python-version`), managed with `uv`. Install with `uv sync`.
-- Run the CLI with `uv run oerbarium <command>` (`crawl dariah`, `parse`, `merge`).
+- Run the CLI with `uv run oerbarium <command>` (`crawl dariah`, `crawl carpentry`, `parse`, `merge`).
 - Lint with `uvx ruff check .` (config in `pyproject.toml`; `BLE001` is ignored on
   purpose). Ruff is not a project dependency.
 - There is no test suite yet. Check a change by running the affected command on a
@@ -34,7 +34,9 @@ there with a name that says what they are (`..._PATH`, `..._SECONDS`, `..._ENV_V
 ```
 cli.py           click commands; the only place that echoes to the terminal
 config.py        all app settings as constants, plus API key/base URL/model resolution
-crawler.py       DariahCrawler: fetches DARIAH-Campus pages (requests + bs4) into raw dicts
+crawler.py       DariahCrawler: fetches DARIAH-Campus pages (requests + bs4) into raw dicts;
+                 CarpentryCrawler: lists a Carpentries GitHub org via the REST API and
+                 collects README, LICENSE text and latest release per repo
 service.py       record sources (.txt/.json/.jsonl), DaliaInterchangeFormatParser, ResultWriter,
                  resume logic, atomic_write_text
 client.py        LlmClient: chat completions loop, answers tool calls, validates the reply

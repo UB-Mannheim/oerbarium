@@ -26,6 +26,11 @@ DISCIPLINE_LOOKUP_MAX_HITS = 5
 
 # Crawler
 CRAWL_TIMEOUT_SECONDS = 30.0
+GITHUB_API_BASE_URL = "https://api.github.com"
+GITHUB_API_VERSION = "2022-11-28"
+GITHUB_PAGE_SIZE = 100
+GITHUB_TOKEN_ENV_VAR = "GITHUB_TOKEN"
+CARPENTRY_GITHUB_ORG = "datacarpentry"
 
 # Parser
 DEFAULT_PARSE_OUTPUT_FORMAT = "json"
@@ -50,6 +55,15 @@ def resolve_api_key(explicit: str | None = None) -> str:
         f"No API key found. Set the {API_KEY_ENV_VAR} environment variable "
         "or pass --api-key."
     )
+
+
+def resolve_github_token(explicit: str | None = None) -> str | None:
+    """
+    Find the optional GitHub token in the explicit argument or the environment —
+    like the API key, never in config.env. Without one the GitHub API allows only
+    60 requests per hour.
+    """
+    return explicit or os.getenv(GITHUB_TOKEN_ENV_VAR) or None
 
 
 def resolve_base_url(env_file: str = ENV_FILE_PATH) -> str:

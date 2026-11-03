@@ -9,6 +9,7 @@ CLI to collect, parse and map Open Educational Resources (OER) metadata into the
 - [LLM configuration](#llm-configuration)
 - [CLI commands](#cli-commands)
   - [`oerbarium crawl dariah`](#oerbarium-crawl-dariah)
+  - [`oerbarium crawl carpentry`](#oerbarium-crawl-carpentry)
   - [`oerbarium parse`](#oerbarium-parse)
   - [`oerbarium merge`](#oerbarium-merge)
 - [Funding](#funding)
@@ -91,6 +92,26 @@ oerbarium crawl dariah -i urls.txt -o crawled.json
 | `-o, --output-path` | Path to write crawled metadata as a JSON array (required) |
 | `--strict` | Abort on the first failing URL instead of skipping it |
 | `-v, --verbose` | Log progress and skipped URLs |
+
+### `oerbarium crawl carpentry`
+
+Crawl the lesson repositories of a Carpentries GitHub organisation (default: [datacarpentry](https://github.com/orgs/datacarpentry/repositories)) into a JSON array of raw metadata: repository details, README, license (GitHub's SPDX id plus the raw LICENSE text) and latest release date. Archived repositories are skipped unless `--include-archived` is set.
+
+The crawler makes three GitHub API calls per repository. Without a token GitHub allows only 60 requests per hour, so set a token first. If a run stops early (rate limit, `--strict`, Ctrl+C), the repositories crawled so far are still written to the output file.
+
+```bash
+export GITHUB_TOKEN=<your token>
+oerbarium crawl carpentry -o carpentry.json
+```
+
+| Option | Description |
+| --- | --- |
+| `-o, --output-path` | Path to write crawled metadata as a JSON array (required) |
+| `--org` | GitHub organisation to crawl (default: `datacarpentry`) |
+| `--include-archived` | Also crawl archived repositories |
+| `--github-token` | GitHub token (default: the `GITHUB_TOKEN` environment variable) |
+| `--strict` | Abort on the first failing repository instead of skipping it. Repositories crawled before the failure are still written to the output file |
+| `-v, --verbose` | Log progress and skipped repositories |
 
 ### `oerbarium parse`
 

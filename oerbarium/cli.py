@@ -13,15 +13,17 @@ from .catalogue import (
 )
 from .client import LlmClient
 from .config import (
+    CARPENTRY_GITHUB_ORG,
     DEFAULT_CATALOGUE_PATH,
     DEFAULT_PARSE_OUTPUT_FORMAT,
     LOG_FORMAT,
     MODEL_NAME_ENV_VAR,
     resolve_api_key,
     resolve_base_url,
+    resolve_github_token,
     resolve_model_name,
 )
-from .crawler import DariahCrawler, read_url_list
+from .crawler import CarpentryCrawler, DariahCrawler, read_url_list
 from .errors import ClientError, ConfigurationError
 from .schema import DaliaInterchangeFormat
 from .service import (
@@ -38,6 +40,11 @@ from .tools import ToolRegistry
 class CrawlingProgressReporter:
     def report(self, number: int, total: int) -> None:
         click.echo(f"[{number}/{total}] Crawling website(s) ...")
+
+
+class GitHubProgressReporter:
+    def report(self, number: int, total: int) -> None:
+        click.echo(f"[{number}/{total}] Crawling GitHub repo(s) ...")
 
 
 class ParsingProgressReporter:
@@ -128,6 +135,88 @@ def crawl_dariah(
     if skipped := len(urls) - len(records):
         click.echo(f"Skipped {skipped} of {len(urls)} URL(s)", err=True)
     click.echo(f"Wrote metadata of {len(records)} website(s) to {output_path}")
+
+
+@crawl.command("carpentry", no_args_is_help=True)
+@click.option(
+    "-o",
+    "--output-path",
+    type=click.Path(dir_okay=False, path_type=Path),
+    required=True,
+    help="Where to write the crawled metadata as a JSON array.",
+)
+@click.option(
+    "--org",
+    default=CARPENTRY_GITHUB_ORG,
+    show_default=True,
+    help="GitHub organisation whose repositories to crawl.",
+)
+@click.option(
+    "--include-archived",
+    is_flag=True,
+    help="Also crawl archived repositories.",
+)
+@click.option(
+    "--github-token",
+    default=None,
+    help="GitHub token (default: the GITHUB_TOKEN environment variable). "
+    "Without one GitHub allows only 60 requests per hour.",
+)
+@click.option(
+    "--strict",
+    is_flag=True,
+    help="Abort on the first failing repository instead of skipping it.",
+)
+@click.option(
+    "-v",
+    "--verbose",
+    is_flag=True,
+    help="Log progress and skipped repositories."
+)
+def crawl_carpentry(
+    output_path: Path,
+    org: str,
+    include_archived: bool,
+    github_token: str | None,
+    strict: bool,
+    verbose: bool,
+) -> None:
+    """
+    Crawl the lesson repositories of a Carpentries GitHub org into a JSON array.
+    """
+    logging.basicConfig(
+        level=logging.DEBUG if verbose else logging.WARNING,
+        format=LOG_FORMAT,
+    )
+
+    crawler = CarpentryCrawler(
+        org=org,
+        include_archived=include_archived,
+        token=resolve_github_token(github_token),
+        strict=strict,
+        reporter=GitHubProgressReporter(),
+    )
+    try:
+        records = crawler.crawl()
+    except (ClientError, KeyboardInterrupt) as exc:
+        if crawler.records:
+            _write_records(output_path, crawler.records)
+            click.echo(
+                f"Kept {len(crawler.records)} crawled repo(s) in {output_path}",
+                err=True,
+            )
+        if isinstance(exc, KeyboardInterrupt):
+            raise click.Abort() from exc
+        raise click.ClickException(str(exc)) from exc
+
+    if not records:
+        raise click.ClickException("No repository could be crawled.")
+
+    _write_records(output_path, records)
+
+    if skipped := crawler.skipped:
+        click.echo(f"Skipped {skipped} repo(s)", err=True)
+    click.echo(f"Wrote metadata of {len(records)} repo(s) to {output_path}")
 
 
 @cli.command("parse", no_args_is_help=True)
@@ -330,6 +419,11 @@ def _warn_duplicate(duplicate: Duplicate, outcome: str) -> None:
         f"{duplicate.found_at} (matched on {duplicate.matched_on}) - {outcome}",
         err=True,
     )
+
+
+def _write_records(path: Path, records: list[dict]) -> None:
+    """Write crawled records as a JSON array."""
+    atomic_write_text(path, json.dumps(records, ensure_ascii=False, indent=2) + "\n")
 
 
 def _require_model_name(explicit: str | None) -> str:
