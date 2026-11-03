@@ -36,7 +36,7 @@ CARPENTRY_GITHUB_ORG = "datacarpentry"
 DEFAULT_PARSE_OUTPUT_FORMAT = "json"
 
 # OER Catalogue for merging parsed metadata
-DEFAULT_CATALOGUE_PATH = Path("data/catalogue/AiDaLi_OER_Katalog.xlsx")
+DEFAULT_CATALOGUE_PATH = Path("data/catalogue/oer_catalogue.xlsx")
 CATALOGUE_SHEET_NAME = "OER_Catalogue"
 CATALOGUE_BACKUP_DIR_NAME = ".backup"
 
