@@ -8,8 +8,14 @@ user-facing reference for every command and option.
 
 ## Setup and commands
 
-- Python 3.13 (`.python-version`), managed with `uv`. Install with `uv sync`.
-- Run the CLI with `uv run oerbarium <command>` (`crawl dariah`, `crawl carpentry`, `parse`, `merge`).
+- Python 3.13 (`.python-version`), managed with `uv`.
+- **Never touch `.venv`.** It belongs to the developer: don't create, sync, recreate
+  or delete it, and don't run plain `uv sync` / `uv run`, which would rewrite it.
+  Use your own environment in `.venv-agent` by setting `UV_PROJECT_ENVIRONMENT` on
+  every `uv` command (or export it once per shell):
+  `export UV_PROJECT_ENVIRONMENT=.venv-agent`, then `uv sync`.
+- Run the CLI with `UV_PROJECT_ENVIRONMENT=.venv-agent uv run oerbarium <command>`
+  (`crawl dariah`, `crawl carpentry`, `parse`, `merge`).
 - Lint with `uvx ruff check .` (config in `pyproject.toml`; `BLE001` is ignored on
   purpose). Ruff is not a project dependency.
 - There is no test suite yet. Check a change by running the affected command on a

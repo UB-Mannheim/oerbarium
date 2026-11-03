@@ -17,4 +17,5 @@ data/
 
 # Virtual environments
 .venv
+.venv-agent
 
