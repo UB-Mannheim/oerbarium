@@ -2,7 +2,7 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: oerbarium
+title: OERbarium
 message: >-
   Collect, parse and map Open Educational Resources (OER) metadata into the DALIA Interchange Format (DIF V1.4)
 type: software
