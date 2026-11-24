@@ -1,10 +1,10 @@
 [project]
 name = "oerbarium"
-version = "0.2.0"
+version = "0.2.1"
 description = "Collect, parse and map Open Educational Resources (OER) metadata into the DALIA Interchange Format (DIF V1.4)"
 readme = "README.md"
 authors = [
-    { name = "tsmdt", email = "thomas.schmidt@uni-mannheim.de" }
+    { name = "Thomas Schmidt", email = "thomas.schmidt@uni-mannheim.de" }
 ]
 requires-python = ">=3.13"
 dependencies = [

@@ -1,0 +1,15 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: oerbarium
+message: >-
+  Collect, parse and map Open Educational Resources (OER) metadata into the DALIA Interchange Format (DIF V1.4)
+type: software
+authors:
+  - given-names: Schmidt
+    family-names: Thomas
+    email: thomas.schmidt@uni-mannheim.de
+    affiliation: University of Mannheim
+    orcid: 'https://orcid.org/0000-0003-3620-3355'
+version: 0.2.1
