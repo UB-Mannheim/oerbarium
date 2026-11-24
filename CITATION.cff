@@ -7,8 +7,8 @@ message: >-
   Collect, parse and map Open Educational Resources (OER) metadata into the DALIA Interchange Format (DIF V1.4)
 type: software
 authors:
-  - given-names: Schmidt
-    family-names: Thomas
+  - given-names: Thomas
+    family-names: Schmidt
     email: thomas.schmidt@uni-mannheim.de
     affiliation: University of Mannheim
     orcid: 'https://orcid.org/0000-0003-3620-3355'
